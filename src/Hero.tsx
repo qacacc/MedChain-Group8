@@ -15,7 +15,7 @@ import ContentSections from "./ContentSections";
  * - Các Micro-interactions (Biểu tượng Tim, Não, Bảo mật).
  * - Footer tuân thủ pháp lý y tế.
  */
-export default function Hero(): JSX.Element {
+export default function Hero() {
   // Trạng thái Loading ban đầu và Thanh quá trình
   const [isLoading, setIsLoading] = useState(true);
   const [loadingProgress, setLoadingProgress] = useState(0);
