@@ -1,5 +1,5 @@
-import React, { useState, useEffect, type JSX } from "react";
-import { ShieldCheck, Lock, FileCheck, Heart, Shield, Activity, Database, X, Info, ChevronRight } from "lucide-react";
+import { useState, useEffect } from "react";
+import { ShieldCheck, Lock, FileCheck, Heart, Shield, Activity, Database, X, Info } from "lucide-react";
 import ContentSections from "./ContentSections";
 
 /**

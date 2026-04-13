@@ -1,11 +1,7 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import BlockchainAnimation from './BlockchainAnimation';
 import { 
   AlertTriangle, 
-  Layers, 
-  Users, 
-  Map, 
-  BarChart, 
   CheckCircle2, 
   UserSquare2, 
   BriefcaseMedical, 
@@ -17,7 +13,6 @@ import {
   Database,
   Lock,
   Globe,
-  Milestone,
   HeartPulse,
   Network
 } from 'lucide-react';

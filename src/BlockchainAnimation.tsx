@@ -1,4 +1,4 @@
-import React from 'react';
+
 import { Database, ShieldCheck, Lock, FileText, CheckCircle2, ArrowRight } from 'lucide-react';
 
 export default function BlockchainAnimation() {
