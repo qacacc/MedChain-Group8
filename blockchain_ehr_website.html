@@ -1,0 +1,797 @@
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap');
+
+*{margin:0;padding:0;box-sizing:border-box}
+
+:root{
+  --navy:#0B1F3A;
+  --navy2:#142d52;
+  --teal:#0E8A6E;
+  --teal2:#0fb88f;
+  --teal-light:#e0f5ef;
+  --amber:#C47D0E;
+  --amber-light:#fef4e0;
+  --red:#C0392B;
+  --red-light:#fdf0ef;
+  --text:#1a1a2e;
+  --text2:#4a5568;
+  --text3:#718096;
+  --bg:#f8f9fc;
+  --white:#ffffff;
+  --border:#e2e8f0;
+  --serif:'DM Serif Display',serif;
+  --sans:'DM Sans',sans-serif;
+}
+
+body{font-family:var(--sans);background:var(--bg);color:var(--text);font-size:15px;line-height:1.7}
+
+/* NAV */
+nav{background:var(--navy);padding:0 2rem;display:flex;align-items:center;justify-content:space-between;height:60px;position:sticky;top:0;z-index:100}
+.nav-brand{display:flex;align-items:center;gap:10px}
+.nav-logo{width:32px;height:32px;background:var(--teal);border-radius:6px;display:flex;align-items:center;justify-content:center}
+.nav-logo svg{width:18px;height:18px;fill:white}
+.nav-title{color:white;font-weight:500;font-size:14px;letter-spacing:.3px}
+.nav-links{display:flex;gap:2rem}
+.nav-links a{color:rgba(255,255,255,.65);font-size:13px;text-decoration:none;font-weight:400;transition:.2s}
+.nav-links a:hover{color:white}
+.nav-badge{background:var(--teal);color:white;font-size:11px;padding:3px 10px;border-radius:20px;font-weight:500}
+
+/* HERO */
+.hero{background:var(--navy);padding:80px 2rem 90px;position:relative;overflow:hidden}
+.hero-chain{position:absolute;right:0;top:0;bottom:0;width:45%;opacity:.06;display:flex;align-items:center;justify-content:center}
+.hero-inner{max-width:900px;margin:0 auto;position:relative;z-index:1}
+.hero-tag{display:inline-flex;align-items:center;gap:6px;background:rgba(14,138,110,.2);border:1px solid rgba(14,138,110,.3);color:var(--teal2);font-size:12px;padding:4px 12px;border-radius:20px;margin-bottom:20px;font-weight:500}
+.hero h1{font-family:var(--serif);color:white;font-size:clamp(2rem,4vw,3rem);line-height:1.2;margin-bottom:16px;font-weight:400}
+.hero h1 em{color:var(--teal2);font-style:normal}
+.hero-sub{color:rgba(255,255,255,.6);font-size:16px;max-width:600px;margin-bottom:36px;font-weight:300;line-height:1.8}
+.hero-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;max-width:560px}
+.hero-stat{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);border-radius:10px;padding:16px}
+.hero-stat-n{font-family:var(--serif);color:var(--teal2);font-size:1.8rem}
+.hero-stat-l{color:rgba(255,255,255,.5);font-size:12px;margin-top:2px}
+.hero-team{margin-top:40px;padding-top:32px;border-top:1px solid rgba(255,255,255,.1);display:flex;align-items:center;gap:16px}
+.hero-team-label{color:rgba(255,255,255,.4);font-size:12px}
+.team-chips{display:flex;flex-wrap:wrap;gap:6px}
+.team-chip{background:rgba(255,255,255,.08);color:rgba(255,255,255,.7);font-size:11px;padding:4px 10px;border-radius:6px}
+
+/* SECTIONS */
+.section{padding:72px 2rem;max-width:960px;margin:0 auto}
+.section-tag{color:var(--teal);font-size:12px;font-weight:500;letter-spacing:.8px;text-transform:uppercase;margin-bottom:8px}
+.section-title{font-family:var(--serif);font-size:clamp(1.5rem,3vw,2rem);color:var(--text);margin-bottom:12px;font-weight:400}
+.section-sub{color:var(--text2);font-size:15px;max-width:560px;line-height:1.8;margin-bottom:40px}
+.divider{height:1px;background:var(--border);max-width:960px;margin:0 auto}
+
+/* PROBLEM CARDS */
+.problem-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px}
+.prob-card{background:var(--white);border:0.5px solid var(--border);border-radius:10px;padding:18px;border-left:3px solid var(--red)}
+.prob-icon{font-size:16px;margin-bottom:8px}
+.prob-title{font-weight:500;font-size:13px;color:var(--text);margin-bottom:4px}
+.prob-desc{font-size:12px;color:var(--text3);line-height:1.6}
+
+/* BLOCKCHAIN PILLARS */
+.pillars{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:16px;margin-top:8px}
+.pillar{background:var(--white);border:0.5px solid var(--border);border-radius:12px;padding:22px;text-align:center}
+.pillar-icon{width:48px;height:48px;border-radius:12px;margin:0 auto 14px;display:flex;align-items:center;justify-content:center}
+.pillar-icon svg{width:24px;height:24px}
+.pillar h3{font-weight:500;font-size:14px;margin-bottom:6px}
+.pillar p{font-size:12px;color:var(--text3);line-height:1.6}
+.p-teal{background:var(--teal-light)}.p-teal svg{fill:var(--teal)}
+.p-navy{background:#e8edf5}.p-navy svg{fill:var(--navy)}
+.p-amber{background:var(--amber-light)}.p-amber svg{fill:var(--amber)}
+.p-red{background:var(--red-light)}.p-red svg{fill:var(--red)}
+
+/* STAKEHOLDERS */
+.stake-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px}
+.stake-card{background:var(--white);border:0.5px solid var(--border);border-radius:10px;padding:16px}
+.stake-top{display:flex;align-items:center;gap:10px;margin-bottom:8px}
+.stake-avatar{width:36px;height:36px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:500;flex-shrink:0}
+.stake-name{font-weight:500;font-size:13px}
+.stake-role{font-size:11px;color:var(--text3);line-height:1.5}
+.s-teal{background:var(--teal-light);color:var(--teal)}
+.s-navy{background:#e8edf5;color:var(--navy)}
+.s-amber{background:var(--amber-light);color:var(--amber)}
+.s-red{background:var(--red-light);color:var(--red)}
+.s-purple{background:#f0ecff;color:#5B21B6}
+.s-green{background:#ecfdf5;color:#065F46}
+
+/* PERSONAS */
+.persona-tabs{display:flex;gap:8px;margin-bottom:24px;flex-wrap:wrap}
+.persona-tab{padding:8px 18px;border-radius:8px;border:0.5px solid var(--border);background:var(--white);font-size:13px;cursor:pointer;transition:.2s;color:var(--text2);font-family:var(--sans)}
+.persona-tab.active{background:var(--navy);color:white;border-color:var(--navy)}
+.persona-panel{display:none}
+.persona-panel.active{display:block}
+.persona-card{background:var(--white);border:0.5px solid var(--border);border-radius:14px;overflow:hidden}
+.persona-header{background:var(--navy);padding:24px;display:flex;align-items:center;gap:16px}
+.persona-avatar{width:54px;height:54px;border-radius:50%;background:rgba(255,255,255,.15);display:flex;align-items:center;justify-content:center;font-family:var(--serif);font-size:20px;color:white;flex-shrink:0}
+.persona-meta h3{color:white;font-size:15px;font-weight:500}
+.persona-meta p{color:rgba(255,255,255,.6);font-size:12px;margin-top:2px}
+.persona-quote{background:rgba(255,255,255,.06);border-left:2px solid var(--teal2);padding:10px 14px;margin-top:12px;border-radius:0 6px 6px 0}
+.persona-quote p{color:rgba(255,255,255,.7);font-size:12px;font-style:italic;line-height:1.6}
+.persona-body{display:grid;grid-template-columns:1fr 1fr 1fr;gap:0}
+.persona-col{padding:20px;border-right:0.5px solid var(--border)}
+.persona-col:last-child{border-right:none}
+.persona-col h4{font-size:11px;font-weight:500;color:var(--text3);text-transform:uppercase;letter-spacing:.6px;margin-bottom:10px}
+.persona-col ul{list-style:none;padding:0}
+.persona-col li{font-size:12px;color:var(--text2);line-height:1.7;padding-left:10px;position:relative}
+.persona-col li::before{content:'·';position:absolute;left:0;color:var(--teal)}
+
+/* JOURNEY MAP */
+.journey-wrap{overflow-x:auto;padding-bottom:8px}
+.journey-table{min-width:700px;border-collapse:collapse;width:100%}
+.journey-table th{background:var(--navy);color:white;font-size:11px;font-weight:500;padding:10px 14px;text-align:left}
+.journey-table th:first-child{border-radius:8px 0 0 0;width:120px}
+.journey-table th:last-child{border-radius:0 8px 0 0}
+.journey-table td{padding:12px 14px;font-size:12px;border-bottom:0.5px solid var(--border);vertical-align:top;line-height:1.6}
+.journey-table tr:nth-child(even) td{background:#f9fafb}
+.row-label{font-weight:500;font-size:11px;color:var(--text3);display:flex;align-items:center;gap:5px}
+.emotion-old{color:var(--red);font-size:11px}
+.emotion-new{color:var(--teal);font-size:11px;font-weight:500}
+.journey-table .good{color:var(--teal);font-size:11px}
+.journey-table .bad{color:var(--red);font-size:11px}
+
+/* COMPARISON */
+.compare-wrap{overflow-x:auto}
+.compare-table{width:100%;border-collapse:collapse;min-width:600px}
+.compare-table th{padding:12px 16px;font-size:12px;font-weight:500;text-align:left;border-bottom:2px solid var(--border)}
+.compare-table th:nth-child(2){color:var(--red)}
+.compare-table th:nth-child(3){color:var(--teal)}
+.compare-table td{padding:11px 16px;font-size:13px;border-bottom:0.5px solid var(--border)}
+.compare-table tr:last-child td{border-bottom:none}
+.compare-table .criteria{font-weight:500;font-size:12px;color:var(--text2)}
+.old-cell{color:var(--red);font-size:12px}
+.new-cell{color:var(--teal);font-size:12px;font-weight:500}
+
+/* ARCHITECTURE */
+.arch-stack{display:flex;flex-direction:column;gap:10px}
+.arch-layer{border-radius:10px;overflow:hidden;border:0.5px solid var(--border)}
+.arch-layer-head{padding:12px 18px;display:flex;align-items:center;gap:10px}
+.arch-layer-body{background:var(--white);padding:12px 18px;display:flex;gap:10px;flex-wrap:wrap}
+.arch-comp{background:#f5f7fa;border:0.5px solid var(--border);border-radius:6px;padding:8px 12px;font-size:12px;color:var(--text2)}
+.arch-num{width:24px;height:24px;border-radius:6px;background:rgba(255,255,255,.2);display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:500;color:white;flex-shrink:0}
+.arch-lname{color:white;font-size:13px;font-weight:500}
+.layer-1{background:var(--navy)}
+.layer-2{background:#1a5276}
+.layer-3{background:var(--teal)}
+.layer-4{background:#1e8449}
+
+/* ROADMAP */
+.roadmap{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:16px}
+.rm-card{background:var(--white);border:0.5px solid var(--border);border-radius:12px;padding:20px;position:relative;overflow:hidden}
+.rm-phase{font-size:11px;font-weight:500;letter-spacing:.6px;text-transform:uppercase;margin-bottom:6px}
+.rm-title{font-weight:500;font-size:14px;margin-bottom:4px}
+.rm-period{font-size:11px;color:var(--text3);margin-bottom:14px}
+.rm-items{list-style:none;padding:0}
+.rm-items li{font-size:12px;color:var(--text2);line-height:1.7;padding-left:12px;position:relative;margin-bottom:2px}
+.rm-items li::before{content:'→';position:absolute;left:0;font-size:10px}
+.rm-accent{position:absolute;top:0;right:0;width:4px;height:100%;border-radius:0 12px 12px 0}
+
+/* CHALLENGES */
+.challenge-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.chal-card{background:var(--white);border:0.5px solid var(--border);border-radius:10px;padding:16px;border-left:3px solid var(--amber)}
+.chal-title{font-weight:500;font-size:13px;margin-bottom:4px;color:var(--amber)}
+.chal-desc{font-size:12px;color:var(--text3);line-height:1.6}
+.sol-badge{display:inline-block;background:var(--teal-light);color:var(--teal);font-size:11px;padding:2px 8px;border-radius:4px;margin-top:6px}
+
+/* CONCLUSION */
+.conclusion-bg{background:var(--navy);padding:72px 2rem;text-align:center}
+.conclusion-inner{max-width:700px;margin:0 auto}
+.conclusion-bg .section-title{color:white;margin-bottom:16px}
+.conclusion-bg .section-sub{color:rgba(255,255,255,.6);margin:0 auto 36px}
+.value-pills{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin-bottom:36px}
+.vpill{background:rgba(14,138,110,.15);border:1px solid rgba(14,138,110,.25);color:var(--teal2);font-size:12px;padding:6px 14px;border-radius:20px}
+.refs-small{display:flex;flex-wrap:wrap;gap:6px;justify-content:center}
+.ref-link{background:rgba(255,255,255,.06);color:rgba(255,255,255,.5);font-size:11px;padding:4px 10px;border-radius:6px;text-decoration:none}
+
+/* FOOTER */
+footer{background:var(--navy);border-top:1px solid rgba(255,255,255,.08);padding:20px 2rem;display:flex;align-items:center;justify-content:space-between}
+.footer-left{color:rgba(255,255,255,.4);font-size:12px}
+.footer-right{display:flex;gap:12px}
+.footer-right span{color:rgba(255,255,255,.3);font-size:11px}
+</style>
+
+<nav>
+  <div class="nav-brand">
+    <div class="nav-logo">
+      <svg viewBox="0 0 20 20"><rect x="2" y="2" width="7" height="7" rx="1"/><rect x="11" y="2" width="7" height="7" rx="1" opacity=".6"/><rect x="2" y="11" width="7" height="7" rx="1" opacity=".6"/><rect x="11" y="11" width="7" height="7" rx="1" opacity=".3"/></svg>
+    </div>
+    <span class="nav-title">Blockchain EHR &nbsp;·&nbsp; Nhóm 8</span>
+  </div>
+  <div class="nav-links">
+    <a href="#problem">Vấn đề</a>
+    <a href="#solution">Giải pháp</a>
+    <a href="#users">Người dùng</a>
+    <a href="#journey">Hành trình</a>
+    <a href="#compare">So sánh</a>
+    <a href="#roadmap">Lộ trình</a>
+  </div>
+  <span class="nav-badge">Tư duy Thiết kế</span>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-chain">
+    <svg viewBox="0 0 400 400" fill="white">
+      <rect x="40" y="80" width="80" height="50" rx="8"/><rect x="150" y="80" width="80" height="50" rx="8"/><rect x="260" y="80" width="80" height="50" rx="8"/>
+      <line x1="120" y1="105" x2="150" y2="105" stroke="white" stroke-width="3"/>
+      <line x1="230" y1="105" x2="260" y2="105" stroke="white" stroke-width="3"/>
+      <rect x="40" y="180" width="80" height="50" rx="8"/><rect x="150" y="180" width="80" height="50" rx="8"/>
+      <line x1="120" y1="205" x2="150" y2="205" stroke="white" stroke-width="3"/>
+      <circle cx="80" cy="290" r="25"/><circle cx="190" cy="290" r="25"/><circle cx="300" cy="290" r="25"/>
+      <line x1="105" y1="290" x2="165" y2="290" stroke="white" stroke-width="3"/>
+      <line x1="215" y1="290" x2="275" y2="290" stroke="white" stroke-width="3"/>
+    </svg>
+  </div>
+  <div class="hero-inner">
+    <div class="hero-tag">
+      <svg width="10" height="10" fill="currentColor" viewBox="0 0 10 10"><circle cx="5" cy="5" r="5"/></svg>
+      Tiểu luận Môn Tư duy Thiết kế &amp; Đổi mới Sáng tạo
+    </div>
+    <h1>Ứng dụng <em>Blockchain</em> trong<br>Lưu trữ &amp; Bảo mật<br>Hồ sơ Bệnh án Điện tử</h1>
+    <p class="hero-sub">Chuyển hóa hệ thống y tế từ mô hình tập trung rủi ro sang mạng lưới chia sẻ dữ liệu an toàn, minh bạch — lấy bệnh nhân làm trung tâm.</p>
+    <div class="hero-stats">
+      <div class="hero-stat">
+        <div class="hero-stat-n">85%</div>
+        <div class="hero-stat-l">Người lo ngại bảo mật thông tin y tế</div>
+      </div>
+      <div class="hero-stat">
+        <div class="hero-stat-n">30→3</div>
+        <div class="hero-stat-l">Ngày xử lý Claims bảo hiểm</div>
+      </div>
+      <div class="hero-stat">
+        <div class="hero-stat-n">91%</div>
+        <div class="hero-stat-l">Muốn kiểm soát quyền truy cập EHR</div>
+      </div>
+    </div>
+    <div class="hero-team">
+      <span class="hero-team-label">Nhóm 8 &nbsp;·</span>
+      <div class="team-chips">
+        <span class="team-chip">Huỳnh Tấn Đạt</span>
+        <span class="team-chip">Lê Ngọc Như Ý</span>
+        <span class="team-chip">Nguyễn Đăng Vinh</span>
+        <span class="team-chip">Nguyễn Minh Đức</span>
+        <span class="team-chip">Nguyễn Tấn Vũ</span>
+        <span class="team-chip">Nguyễn Tấn Đạt</span>
+        <span class="team-chip">Lê Quốc Vũ</span>
+        <span class="team-chip">Nguyễn Đức Độ</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- PROBLEM -->
+<div id="problem">
+<div class="section">
+  <div class="section-tag">Giai đoạn 1 · Thấu hiểu</div>
+  <div class="section-title">Vấn đề & Cơ hội</div>
+  <p class="section-sub">Hệ thống hồ sơ bệnh án hiện tại tạo ra nhiều hệ quả nghiêm trọng cho bệnh nhân, bác sĩ và toàn hệ thống y tế.</p>
+  <div class="problem-grid">
+    <div class="prob-card">
+      <div class="prob-icon">⚠</div>
+      <div class="prob-title">Phân mảnh dữ liệu</div>
+      <div class="prob-desc">Bác sĩ khó truy xuất bệnh sử đầy đủ khi bệnh nhân chuyển tuyến điều trị</div>
+    </div>
+    <div class="prob-card">
+      <div class="prob-icon">⚠</div>
+      <div class="prob-title">Rủi ro bảo mật cao</div>
+      <div class="prob-desc">Dễ bị Ransomware/Hacker tấn công, dữ liệu bị mã hóa đòi tiền chuộc</div>
+    </div>
+    <div class="prob-card">
+      <div class="prob-icon">⚠</div>
+      <div class="prob-title">Mất quyền kiểm soát</div>
+      <div class="prob-desc">Bệnh nhân không sở hữu hay kiểm soát dữ liệu sức khỏe của chính mình</div>
+    </div>
+    <div class="prob-card">
+      <div class="prob-icon">⚠</div>
+      <div class="prob-title">Gian lận bảo hiểm</div>
+      <div class="prob-desc">Khó xác minh hồ sơ, chậm trễ bồi thường, dễ bị làm giả hồ sơ</div>
+    </div>
+    <div class="prob-card">
+      <div class="prob-icon">⚠</div>
+      <div class="prob-title">Chi phí lưu trữ cao</div>
+      <div class="prob-desc">Bệnh viện tốn chi phí lớn cho hạ tầng máy chủ tập trung và vận hành</div>
+    </div>
+  </div>
+</div>
+</div>
+<div class="divider"></div>
+
+<!-- BLOCKCHAIN SOLUTION -->
+<div id="solution">
+<div class="section">
+  <div class="section-tag">Giải pháp · Blockchain EHR</div>
+  <div class="section-title">Bốn đặc điểm cốt lõi</div>
+  <p class="section-sub">Blockchain cung cấp kiến trúc kỹ thuật phù hợp để xây dựng hệ thống EHR an toàn, minh bạch và lấy bệnh nhân làm trung tâm.</p>
+  <div class="pillars">
+    <div class="pillar">
+      <div class="pillar-icon p-navy">
+        <svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+      </div>
+      <h3>Tính Phân Tán</h3>
+      <p>Dữ liệu EHR lưu đồng bộ trên mạng nhiều node. Hệ thống vận hành ngay cả khi một bệnh viện bị sự cố.</p>
+    </div>
+    <div class="pillar">
+      <div class="pillar-icon p-teal">
+        <svg viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
+      </div>
+      <h3>Bảo Mật &amp; Bất Biến</h3>
+      <p>Mọi thông tin y tế được mã hóa mật mã học. Gần như không thể chỉnh sửa hay xóa bỏ trái phép.</p>
+    </div>
+    <div class="pillar">
+      <div class="pillar-icon p-amber">
+        <svg viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+      </div>
+      <h3>Lấy Bệnh Nhân Làm Trung Tâm</h3>
+      <p>Bệnh nhân làm chủ dữ liệu qua Private Key. Cấp quyền cho bác sĩ qua Smart Contract.</p>
+    </div>
+    <div class="pillar">
+      <div class="pillar-icon p-red">
+        <svg viewBox="0 0 24 24"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+      </div>
+      <h3>Truy Xuất &amp; Minh Bạch</h3>
+      <p>Mọi thao tác truy cập được ghi lịch sử (audit log) rõ ràng, không thể xóa — ai truy cập lúc nào đều biết.</p>
+    </div>
+  </div>
+</div>
+</div>
+<div class="divider"></div>
+
+<!-- STAKEHOLDERS -->
+<div class="section">
+  <div class="section-tag">Bên liên quan · Stakeholders</div>
+  <div class="section-title">Hệ sinh thái Blockchain EHR</div>
+  <p class="section-sub">Nhiều nhóm đối tượng với vai trò, quyền lợi và kỳ vọng khác nhau trong toàn hệ sinh thái.</p>
+  <div class="stake-grid">
+    <div class="stake-card">
+      <div class="stake-top"><div class="stake-avatar s-teal">BN</div><div class="stake-name">Bệnh nhân</div></div>
+      <div class="stake-role">Chủ sở hữu dữ liệu — quản lý Private Key, cấp quyền truy cập EHR cá nhân</div>
+    </div>
+    <div class="stake-card">
+      <div class="stake-top"><div class="stake-avatar s-navy">BS</div><div class="stake-name">Y bác sĩ &amp; Điều dưỡng</div></div>
+      <div class="stake-role">Người dùng hàng ngày — truy xuất, cập nhật hồ sơ bệnh nhân theo chuẩn HL7</div>
+    </div>
+    <div class="stake-card">
+      <div class="stake-top"><div class="stake-avatar s-amber">QL</div><div class="stake-name">Ban quản lý BV</div></div>
+      <div class="stake-role">Ra quyết định triển khai, giám sát chuyển đổi số, kỳ vọng giảm chi phí vận hành</div>
+    </div>
+    <div class="stake-card">
+      <div class="stake-top"><div class="stake-avatar s-red">BH</div><div class="stake-name">Cơ quan Bảo hiểm</div></div>
+      <div class="stake-role">Verifier — xác minh Claims tự động qua Smart Contract, chống gian lận</div>
+    </div>
+    <div class="stake-card">
+      <div class="stake-top"><div class="stake-avatar s-purple">CP</div><div class="stake-name">Chính phủ / Bộ Y tế</div></div>
+      <div class="stake-role">Cơ quan quản lý — ban hành chuẩn HL7/FHIR và luật bảo mật dữ liệu</div>
+    </div>
+    <div class="stake-card">
+      <div class="stake-top"><div class="stake-avatar s-green">NC</div><div class="stake-name">Nhà nghiên cứu</div></div>
+      <div class="stake-role">Data consumer — khai thác Big Data ẩn danh phục vụ nghiên cứu dịch tễ học</div>
+    </div>
+  </div>
+</div>
+<div class="divider"></div>
+
+<!-- PERSONAS -->
+<div id="users">
+<div class="section">
+  <div class="section-tag">Giai đoạn 1 · Persona Map</div>
+  <div class="section-title">Chân dung người dùng</div>
+  <p class="section-sub">3 Persona đại diện dựa trên phỏng vấn sâu và quan sát thực tế với 12 người dùng.</p>
+  <div class="persona-tabs">
+    <button class="persona-tab active" onclick="showPersona(0)">Bệnh nhân mãn tính</button>
+    <button class="persona-tab" onclick="showPersona(1)">Bác sĩ chuyên khoa</button>
+    <button class="persona-tab" onclick="showPersona(2)">Nhân viên bảo hiểm</button>
+  </div>
+  <div class="persona-panel active" id="p0">
+    <div class="persona-card">
+      <div class="persona-header">
+        <div class="persona-avatar">VA</div>
+        <div class="persona-meta">
+          <h3>Nguyễn Văn An</h3>
+          <p>58 tuổi · Công nhân nghỉ hưu · Tiểu đường, Tăng huyết áp</p>
+        </div>
+        <div class="persona-quote" style="margin-left:auto;max-width:320px">
+          <p>"Tôi mệt mỏi lắm khi phải mang theo cả chồng hồ sơ mỗi lần khám. Tôi sợ nhất là bác sĩ mới không biết mình đang uống thuốc gì."</p>
+        </div>
+      </div>
+      <div class="persona-body">
+        <div class="persona-col">
+          <h4>Mục tiêu</h4>
+          <ul>
+            <li>Khám nhanh, không giải thích lại bệnh sử</li>
+            <li>Xét nghiệm không bị làm lại nhiều lần</li>
+            <li>Bảo mật thông tin nhạy cảm cá nhân</li>
+            <li>Hồ sơ sẵn sàng khi cấp cứu</li>
+          </ul>
+        </div>
+        <div class="persona-col">
+          <h4>Nỗi đau</h4>
+          <ul>
+            <li>Sổ khám giấy dễ mất, dễ hỏng</li>
+            <li>Bị yêu cầu xét nghiệm lại khi chuyển tuyến</li>
+            <li>Sợ thông tin bị rò rỉ cho bên thứ 3</li>
+            <li>Không biết ai đã truy cập hồ sơ mình</li>
+          </ul>
+        </div>
+        <div class="persona-col">
+          <h4>Mức độ tech</h4>
+          <ul>
+            <li>Smartphone cơ bản</li>
+            <li>Dùng Zalo, Facebook thành thạo</li>
+            <li>Chưa quen công nghệ phức tạp</li>
+            <li>Cần giao diện rất đơn giản</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="persona-panel" id="p1">
+    <div class="persona-card">
+      <div class="persona-header">
+        <div class="persona-avatar">TM</div>
+        <div class="persona-meta">
+          <h3>BS. Trần Minh</h3>
+          <p>42 tuổi · Bác sĩ Nội khoa · BV Chợ Rẫy, TP.HCM</p>
+        </div>
+        <div class="persona-quote" style="margin-left:auto;max-width:320px">
+          <p>"Nhiều lần tôi phải chẩn đoán 'mù' vì không có lịch sử dùng thuốc của bệnh nhân từ bệnh viện khác. Rất nguy hiểm!"</p>
+        </div>
+      </div>
+      <div class="persona-body">
+        <div class="persona-col">
+          <h4>Mục tiêu</h4>
+          <ul>
+            <li>Truy xuất đầy đủ bệnh sử trong 30 giây</li>
+            <li>Giảm sai sót do thiếu thông tin lịch sử</li>
+            <li>Cập nhật hồ sơ nhanh, không nhập lại</li>
+            <li>Đảm bảo an toàn y tế và pháp lý</li>
+          </ul>
+        </div>
+        <div class="persona-col">
+          <h4>Nỗi đau</h4>
+          <ul>
+            <li>Thiếu dữ liệu lịch sử bệnh nhân</li>
+            <li>HIS cũ chậm, hay bị lỗi hệ thống</li>
+            <li>Không liên thông với phòng khám tư</li>
+            <li>Tốn thời gian hỏi bệnh sử từ đầu</li>
+          </ul>
+        </div>
+        <div class="persona-col">
+          <h4>Mức độ tech</h4>
+          <ul>
+            <li>Thành thạo hệ thống HIS bệnh viện</li>
+            <li>Dùng tablet, laptop hàng ngày</li>
+            <li>Sẵn sàng học công nghệ mới</li>
+            <li>Ưu tiên tốc độ và độ chính xác</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="persona-panel" id="p2">
+    <div class="persona-card">
+      <div class="persona-header">
+        <div class="persona-avatar">LM</div>
+        <div class="persona-meta">
+          <h3>Lê Thị Mai</h3>
+          <p>42 tuổi · Trưởng phòng xét duyệt Claims · BHYT, 15 năm KN</p>
+        </div>
+        <div class="persona-quote" style="margin-left:auto;max-width:320px">
+          <p>"Chúng tôi xử lý 500 hồ sơ BH mỗi tuần. Ít nhất 15–20% có dấu hiệu gian lận nhưng rất khó chứng minh vì hồ sơ có thể bị chỉnh sửa."</p>
+        </div>
+      </div>
+      <div class="persona-body">
+        <div class="persona-col">
+          <h4>Mục tiêu</h4>
+          <ul>
+            <li>Xác minh tự động, giảm tải thủ công</li>
+            <li>Phát hiện gian lận sớm và chính xác</li>
+            <li>Rút ngắn xử lý Claims: 30→3 ngày</li>
+            <li>Dashboard tổng hợp KPI thời gian thực</li>
+          </ul>
+        </div>
+        <div class="persona-col">
+          <h4>Nỗi đau</h4>
+          <ul>
+            <li>Hồ sơ dễ bị giả mạo, không có cơ chế chống gian lận</li>
+            <li>Xử lý thủ công tốn kém nhân lực</li>
+            <li>Liên lạc với bệnh viện mất nhiều thời gian</li>
+          </ul>
+        </div>
+        <div class="persona-col">
+          <h4>Mức độ tech</h4>
+          <ul>
+            <li>Thành thạo Excel, phần mềm nghiệp vụ</li>
+            <li>Mong dashboard tổng hợp dữ liệu</li>
+            <li>Cần hệ thống tự động hóa cao</li>
+            <li>Ưu tiên độ tin cậy dữ liệu</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+<div class="divider"></div>
+
+<!-- CUSTOMER JOURNEY -->
+<div id="journey">
+<div class="section">
+  <div class="section-tag">Giai đoạn 1 · Customer Journey Map</div>
+  <div class="section-title">Hành trình bệnh nhân</div>
+  <p class="section-sub">So sánh trải nghiệm trước và sau khi áp dụng Blockchain EHR qua 6 giai đoạn chính.</p>
+  <div class="journey-wrap">
+    <table class="journey-table">
+      <thead>
+        <tr>
+          <th>Giai đoạn</th>
+          <th>Đặt lịch khám</th>
+          <th>Khám &amp; Chẩn đoán</th>
+          <th>Xét nghiệm</th>
+          <th>Chuyển tuyến</th>
+          <th>Thanh toán &amp; BH</th>
+          <th>Cấp cứu đột xuất</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><span class="row-label">Cảm xúc (cũ)</span></td>
+          <td><span class="emotion-old">Bất tiện, tốn thời gian chờ</span></td>
+          <td><span class="emotion-old">Lo lắng, mệt mỏi giải thích lại</span></td>
+          <td><span class="emotion-old">Tốn kém nếu bị làm lại</span></td>
+          <td><span class="emotion-old">Hoang mang, sợ mất thông tin</span></td>
+          <td><span class="emotion-old">Mệt mỏi với thủ tục giấy tờ</span></td>
+          <td><span class="emotion-old">Nguy kịch, không có thông tin</span></td>
+        </tr>
+        <tr>
+          <td><span class="row-label">Điểm đau (cũ)</span></td>
+          <td class="bad">Không biết BV nào còn slot, không có lịch sử khám</td>
+          <td class="bad">Phải giải thích lại từ đầu, bác sĩ thiếu thông tin</td>
+          <td class="bad">BV mới không nhận kết quả XN từ BV cũ</td>
+          <td class="bad">Hồ sơ giấy dễ mất, thông tin không liên thông</td>
+          <td class="bad">Cần photo nhiều giấy tờ, chờ BH xác minh 2–4 tuần</td>
+          <td class="bad">Không truy cập được nếu bệnh nhân bất tỉnh</td>
+        </tr>
+        <tr>
+          <td><span class="row-label">Blockchain EHR giải quyết</span></td>
+          <td class="good">App đặt lịch online, bác sĩ xem lịch sử trước khám</td>
+          <td class="good">Bác sĩ truy cập EHR đầy đủ tức thì sau khi được cấp quyền</td>
+          <td class="good">Kết quả XN lưu trên Blockchain, BV nào cũng truy xuất</td>
+          <td class="good">Hồ sơ EHR tự động chuyển theo bệnh nhân, BV mới tiếp nhận tức thì</td>
+          <td class="good">Smart Contract tự động gửi dữ liệu sang BH, claims xử lý vài ngày</td>
+          <td class="good">Smart Contract mở khóa khẩn cấp có kiểm soát — cứu được bệnh nhân</td>
+        </tr>
+        <tr>
+          <td><span class="row-label">Cảm xúc (mới)</span></td>
+          <td><span class="emotion-new">Tự tin, tiện lợi</span></td>
+          <td><span class="emotion-new">An tâm, tin tưởng</span></td>
+          <td><span class="emotion-new">Tiết kiệm, nhanh chóng</span></td>
+          <td><span class="emotion-new">Yên tâm, liền mạch</span></td>
+          <td><span class="emotion-new">Hài lòng, minh bạch</span></td>
+          <td><span class="emotion-new">An toàn, được cứu kịp thời</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+</div>
+<div class="divider"></div>
+
+<!-- COMPARISON -->
+<div id="compare">
+<div class="section">
+  <div class="section-tag">Giai đoạn 3 · Phân tích</div>
+  <div class="section-title">Hệ thống cũ vs. Blockchain EHR</div>
+  <p class="section-sub">So sánh toàn diện 10 tiêu chí quan trọng nhất giữa hai mô hình quản lý hồ sơ bệnh án.</p>
+  <div class="compare-wrap">
+    <table class="compare-table">
+      <thead>
+        <tr>
+          <th style="width:200px">Tiêu chí</th>
+          <th>Hệ thống truyền thống</th>
+          <th>Blockchain EHR</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td class="criteria">Kiến trúc lưu trữ</td><td class="old-cell">Máy chủ tập trung, dễ bị tấn công</td><td class="new-cell">Phân tán, không có điểm tập trung duy nhất</td></tr>
+        <tr><td class="criteria">Bảo mật dữ liệu</td><td class="old-cell">Dễ bị Ransomware, Hacker, mất dữ liệu</td><td class="new-cell">Mã hóa mật mã học, gần như không thể hack</td></tr>
+        <tr><td class="criteria">Truy cập liên tuyến</td><td class="old-cell">Không thể hoặc rất khó, cần fax/gọi điện</td><td class="new-cell">Thời gian thực, tức thì sau khi được cấp quyền</td></tr>
+        <tr><td class="criteria">Quyền kiểm soát dữ liệu</td><td class="old-cell">Bệnh viện giữ và quản lý</td><td class="new-cell">Bệnh nhân làm chủ qua Private Key</td></tr>
+        <tr><td class="criteria">Tính bất biến (Audit)</td><td class="old-cell">Dễ sửa, không có audit log đầy đủ</td><td class="new-cell">Không thể sửa xóa, audit log vĩnh viễn</td></tr>
+        <tr><td class="criteria">Chi phí lưu trữ</td><td class="old-cell">Cao — máy chủ, bảo trì, IT</td><td class="new-cell">Giảm theo quy mô nhờ phân tán (-30 đến 50%)</td></tr>
+        <tr><td class="criteria">Phát hiện gian lận BH</td><td class="old-cell">Khó, thủ công, tốn nhiều thời gian</td><td class="new-cell">Tự động qua Smart Contract, gần như tức thì</td></tr>
+        <tr><td class="criteria">Xử lý Claims BH</td><td class="old-cell">2–4 tuần/hồ sơ</td><td class="new-cell">Vài phút đến vài ngày (Smart Contract)</td></tr>
+        <tr><td class="criteria">Liên thông quốc gia</td><td class="old-cell">Không có chuẩn thống nhất</td><td class="new-cell">Chuẩn hóa HL7/FHIR trên toàn mạng lưới</td></tr>
+        <tr><td class="criteria">Khẩn cấp (bệnh nhân bất tỉnh)</td><td class="old-cell">Không truy cập được nếu không có người thân</td><td class="new-cell">Smart Contract mở khóa khẩn cấp có kiểm soát</td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+</div>
+<div class="divider"></div>
+
+<!-- ARCHITECTURE -->
+<div class="section">
+  <div class="section-tag">Giai đoạn 4 · Nguyên mẫu</div>
+  <div class="section-title">Kiến trúc hệ thống 4 lớp</div>
+  <p class="section-sub">Thiết kế phân lớp rõ ràng đảm bảo bảo mật, hiệu năng và khả năng mở rộng theo quy mô.</p>
+  <div class="arch-stack">
+    <div class="arch-layer">
+      <div class="arch-layer-head layer-1">
+        <div class="arch-num">1</div>
+        <div class="arch-lname">Frontend — Lớp giao diện người dùng</div>
+      </div>
+      <div class="arch-layer-body">
+        <div class="arch-comp">Patient App (iOS/Android)</div>
+        <div class="arch-comp">Doctor Portal (Web)</div>
+        <div class="arch-comp">Insurance Dashboard (Web)</div>
+        <div class="arch-comp">React Native · React.js · TypeScript</div>
+      </div>
+    </div>
+    <div class="arch-layer">
+      <div class="arch-layer-head layer-2">
+        <div class="arch-num">2</div>
+        <div class="arch-lname">Middleware — Lớp chuẩn hóa &amp; API</div>
+      </div>
+      <div class="arch-layer-body">
+        <div class="arch-comp">API Gateway</div>
+        <div class="arch-comp">HL7/FHIR Converter</div>
+        <div class="arch-comp">Authentication Service</div>
+        <div class="arch-comp">Node.js · FHIR R4 · OAuth 2.0</div>
+      </div>
+    </div>
+    <div class="arch-layer">
+      <div class="arch-layer-head layer-3">
+        <div class="arch-num">3</div>
+        <div class="arch-lname">Blockchain Core — Lõi phi tập trung</div>
+      </div>
+      <div class="arch-layer-body">
+        <div class="arch-comp">EHRRegistry Smart Contract</div>
+        <div class="arch-comp">AccessControl Contract</div>
+        <div class="arch-comp">InsuranceClaims Contract</div>
+        <div class="arch-comp">Hyperledger Fabric / Ethereum</div>
+      </div>
+    </div>
+    <div class="arch-layer">
+      <div class="arch-layer-head layer-4">
+        <div class="arch-num">4</div>
+        <div class="arch-lname">Security — Lớp bảo mật nền tảng</div>
+      </div>
+      <div class="arch-layer-body">
+        <div class="arch-comp">Key Management System (PKI)</div>
+        <div class="arch-comp">AES-256 + RSA Encryption</div>
+        <div class="arch-comp">Audit Trail Engine</div>
+        <div class="arch-comp">HSM · End-to-End Encryption</div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="divider"></div>
+
+<!-- CHALLENGES -->
+<div class="section">
+  <div class="section-tag">Giai đoạn 5 · Kiểm nghiệm</div>
+  <div class="section-title">Thách thức &amp; Giải pháp điều chỉnh</div>
+  <p class="section-sub">Phản hồi thu được từ 31 người dùng kiểm nghiệm — và cách nhóm điều chỉnh sau test.</p>
+  <div class="challenge-grid">
+    <div class="chal-card">
+      <div class="chal-title">Mất Private Key</div>
+      <div class="chal-desc">"Nếu tôi mất điện thoại, tôi mất quyền truy cập hồ sơ của chính mình không?"</div>
+      <div class="sol-badge">Giải pháp: Social Recovery (3/5 người tin cậy xác nhận)</div>
+    </div>
+    <div class="chal-card">
+      <div class="chal-title">Guardian Account</div>
+      <div class="chal-desc">"Người già và trẻ em dưới 18 tuổi quản lý Private Key thế nào?"</div>
+      <div class="sol-badge">Giải pháp: Tài khoản giám hộ với quyền hạn giới hạn</div>
+    </div>
+    <div class="chal-card">
+      <div class="chal-title">Latency trong cấp cứu</div>
+      <div class="chal-desc">"Blockchain có đủ nhanh trong tình huống cấp cứu thực tế không?"</div>
+      <div class="sol-badge">Giải pháp: Kiến trúc Hybrid On-chain/Off-chain</div>
+    </div>
+    <div class="chal-card">
+      <div class="chal-title">Chi phí bệnh viện tuyến tỉnh</div>
+      <div class="chal-desc">"Chi phí triển khai cho bệnh viện tuyến tỉnh có quá cao không?"</div>
+      <div class="sol-badge">Giải pháp: Mô hình định giá phân tầng theo quy mô</div>
+    </div>
+    <div class="chal-card">
+      <div class="chal-title">Vùng sâu, vùng xa</div>
+      <div class="chal-desc">"Cần chế độ offline khi mạng internet không ổn định."</div>
+      <div class="sol-badge">Giải pháp: Cache dữ liệu khẩn cấp, đồng bộ khi có mạng</div>
+    </div>
+    <div class="chal-card">
+      <div class="chal-title">Hành lang pháp lý</div>
+      <div class="chal-desc">Cần tuân thủ Nghị định 13/2023 về bảo vệ dữ liệu cá nhân tại Việt Nam.</div>
+      <div class="sol-badge">Giải pháp: Đăng ký Sandbox Bộ Y tế, tư vấn pháp lý chuyên sâu</div>
+    </div>
+  </div>
+</div>
+<div class="divider"></div>
+
+<!-- ROADMAP -->
+<div id="roadmap">
+<div class="section">
+  <div class="section-tag">Lộ trình triển khai</div>
+  <div class="section-title">3 giai đoạn phát triển</div>
+  <p class="section-sub">Từ pilot tại 1–2 cơ sở y tế đến hệ thống blockchain EHR chuẩn quốc gia và khu vực ASEAN.</p>
+  <div class="roadmap">
+    <div class="rm-card">
+      <div class="rm-accent" style="background:var(--teal)"></div>
+      <div class="rm-phase" style="color:var(--teal)">Giai đoạn 1</div>
+      <div class="rm-title">Pilot &amp; MVP</div>
+      <div class="rm-period">6 – 12 tháng đầu</div>
+      <ul class="rm-items">
+        <li>Hoàn thiện MVP: Patient App, Doctor Portal, Emergency QR</li>
+        <li>Triển khai thí điểm tại 1–2 cơ sở y tế vừa</li>
+        <li>Đăng ký tham gia Sandbox Bộ Y tế (NĐ 13/2023)</li>
+        <li>Đối tác với 1 nhà cung cấp BaaS (IBM/FPT Blockchain)</li>
+      </ul>
+    </div>
+    <div class="rm-card">
+      <div class="rm-accent" style="background:var(--amber)"></div>
+      <div class="rm-phase" style="color:var(--amber)">Giai đoạn 2</div>
+      <div class="rm-title">Mở rộng quy mô</div>
+      <div class="rm-period">1 – 3 năm</div>
+      <ul class="rm-items">
+        <li>Tích hợp Smart Contract Claims với 1 công ty BH tư nhân</li>
+        <li>Mở rộng lên 10–20 bệnh viện tại TP.HCM &amp; Hà Nội</li>
+        <li>Phát triển AI/ML phân tích Big Data ẩn danh</li>
+        <li>Tích hợp với hệ thống BHXH Việt Nam</li>
+      </ul>
+    </div>
+    <div class="rm-card">
+      <div class="rm-accent" style="background:var(--navy2)"></div>
+      <div class="rm-phase" style="color:var(--navy2)">Giai đoạn 3</div>
+      <div class="rm-title">Quy mô quốc gia</div>
+      <div class="rm-period">3 – 5 năm</div>
+      <ul class="rm-items">
+        <li>Đề xuất chuẩn quốc gia Blockchain EHR Việt Nam</li>
+        <li>Mở rộng sang dược phẩm, tiêm chủng, Telemedicine</li>
+        <li>Kết nối mạng lưới chia sẻ dữ liệu y tế ASEAN</li>
+        <li>Tương thích với mô hình Estonia – EU</li>
+      </ul>
+    </div>
+  </div>
+</div>
+</div>
+
+<!-- CONCLUSION -->
+<div class="conclusion-bg">
+  <div class="conclusion-inner">
+    <div class="section-tag" style="color:var(--teal2)">Kết luận</div>
+    <div class="section-title" style="font-family:var(--serif);color:white;margin-bottom:16px">3 giá trị cốt lõi đạt được</div>
+    <p class="section-sub">Tư duy Thiết kế giúp nhóm thấu hiểu con người trước, công nghệ sau — đề xuất giải pháp thực sự giải quyết vấn đề.</p>
+    <div class="value-pills">
+      <div class="vpill">Bảo mật tuyệt đối &amp; chống giả mạo</div>
+      <div class="vpill">Chia sẻ dữ liệu liên thông thời gian thực</div>
+      <div class="vpill">Bệnh nhân làm chủ dữ liệu của mình</div>
+    </div>
+    <div class="refs-small">
+      <a class="ref-link">IBM Blockchain</a>
+      <a class="ref-link">HL7/FHIR R4</a>
+      <a class="ref-link">Hyperledger Fabric</a>
+      <a class="ref-link">Estonia e-Health</a>
+      <a class="ref-link">WHO Digital Health 2020–2025</a>
+      <a class="ref-link">Bộ Y tế VN · NĐ 13/2023</a>
+      <a class="ref-link">ResearchGate – EHR &amp; Blockchain 2019</a>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <div class="footer-left">Nhóm 8 · Môn Tư duy Thiết kế &amp; Đổi mới Sáng tạo · 2025</div>
+  <div class="footer-right">
+    <span>React · TypeScript · Vite 8</span>
+    <span>·</span>
+    <span>Tailwind CSS · Lucide React</span>
+  </div>
+</footer>
+
+<script>
+function showPersona(idx){
+  document.querySelectorAll('.persona-tab').forEach((t,i)=>{
+    t.classList.toggle('active', i===idx)
+  });
+  document.querySelectorAll('.persona-panel').forEach((p,i)=>{
+    p.classList.toggle('active', i===idx)
+  });
+}
+</script>
