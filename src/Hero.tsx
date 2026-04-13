@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { ShieldCheck, Lock, FileCheck, Heart, Shield, Activity, Database, X, Info } from "lucide-react";
 import ContentSections from "./ContentSections";
 
@@ -29,9 +29,29 @@ export default function Hero() {
   // Trạng thái hiển thị giải thích (Modal Popup)
   const [modalContent, setModalContent] = useState<{title: string, desc: string} | null>(null);
 
+  // Ref để force-play video trên mọi thiết bị (iOS, Android)
+  const videoRef = useRef<HTMLVideoElement>(null);
+
   useEffect(() => {
     // Luôn áp dụng dark mode
     document.documentElement.classList.add('dark');
+  }, []);
+
+  useEffect(() => {
+    // Force play video: bắt buộc mute + play() để vượt qua autoplay policy trên mobile
+    const video = videoRef.current;
+    if (video) {
+      video.muted = true;
+      video.volume = 0;
+      const playPromise = video.play();
+      if (playPromise !== undefined) {
+        playPromise.catch(() => {
+          // Nếu autoplay bị chặn, thử lại sau khi user tương tác
+          document.addEventListener('touchstart', () => video.play(), { once: true });
+          document.addEventListener('click', () => video.play(), { once: true });
+        });
+      }
+    }
   }, []);
 
   useEffect(() => {
@@ -143,8 +163,15 @@ export default function Hero() {
           {/* Video Background bám dính toàn màn hình (Parallax) để chống vỡ khung và chống cutoff */}
           <div className="fixed inset-0 w-full h-full object-cover -z-10 pointer-events-none">
             <video
+              ref={videoRef}
               className="w-full h-full object-cover"
-              autoPlay loop muted playsInline src="/introl.mp4"
+              autoPlay
+              loop
+              muted
+              playsInline
+              preload="auto"
+              disablePictureInPicture
+              src="/introl.mp4"
             />
             <div className="absolute inset-0 bg-black/60" />
           </div>
