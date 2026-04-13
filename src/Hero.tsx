@@ -38,19 +38,33 @@ export default function Hero() {
   }, []);
 
   useEffect(() => {
-    // Force play video: bắt buộc mute + play() để vượt qua autoplay policy trên mobile
+    // Fix iOS Safari: React does NOT always write `muted` to the HTML attribute.
+    // We must set it via DOM directly. Same for `playsinline`.
     const video = videoRef.current;
-    if (video) {
-      video.muted = true;
-      video.volume = 0;
-      const playPromise = video.play();
-      if (playPromise !== undefined) {
-        playPromise.catch(() => {
-          // Nếu autoplay bị chặn, thử lại sau khi user tương tác
-          document.addEventListener('touchstart', () => video.play(), { once: true });
-          document.addEventListener('click', () => video.play(), { once: true });
-        });
-      }
+    if (!video) return;
+
+    // Bắt buộc set muted qua DOM attr (iOS Safari yêu cầu attribute, không chỉ property)
+    video.setAttribute('muted', '');
+    video.setAttribute('playsinline', '');
+    video.muted = true;
+    video.volume = 0;
+
+    const tryPlay = () => {
+      video.play().catch(() => {
+        // Fallback: thử lại sau khi user chạm màn hình (iOS Low Power Mode)
+        const resume = () => { video.play(); };
+        document.addEventListener('touchstart', resume, { once: true, passive: true });
+        document.addEventListener('click', resume, { once: true });
+        document.addEventListener('visibilitychange', () => {
+          if (!document.hidden) video.play();
+        }, { once: true });
+      });
+    };
+
+    if (video.readyState >= 3) {
+      tryPlay();
+    } else {
+      video.addEventListener('canplay', tryPlay, { once: true });
     }
   }, []);
 
@@ -160,19 +174,23 @@ export default function Hero() {
             <div className="bg-blob w-[500px] h-[500px] bg-blue-600/20 bottom-[-10%] right-[-10%] opacity-10" style={{ animationDelay: '-5s' }} />
           </div>
 
-          {/* Video Background bám dính toàn màn hình (Parallax) để chống vỡ khung và chống cutoff */}
-          <div className="fixed inset-0 w-full h-full object-cover -z-10 pointer-events-none">
+          {/* Video Background - iOS Safari safe: dùng <source> tag + setAttribute fix */}
+          <div className="fixed inset-0 w-full h-full -z-10 pointer-events-none overflow-hidden">
             <video
               ref={videoRef}
-              className="w-full h-full object-cover"
+              className="absolute top-1/2 left-1/2 min-w-full min-h-full w-auto h-auto -translate-x-1/2 -translate-y-1/2 object-cover"
               autoPlay
               loop
               muted
               playsInline
               preload="auto"
               disablePictureInPicture
-              src="/introl.mp4"
-            />
+            >
+              {/* Source tag giúp iOS Safari nhận dạng video đúng MIME type */}
+              <source src="/introl.mp4" type="video/mp4" />
+              {/* Fallback: dùng CDN nếu file local bị chặn */}
+              <source src="https://assets.mixkit.co/videos/preview/mixkit-digital-animation-of-a-circuit-board-1628-large.mp4" type="video/mp4" />
+            </video>
             <div className="absolute inset-0 bg-black/60" />
           </div>
           
