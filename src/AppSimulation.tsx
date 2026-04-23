@@ -1590,11 +1590,15 @@ export default function AppSimulation({ onBack }: { onBack: () => void }) {
 
                    {/* 5. Live Handshake Feed (Floating) */}
                    <div className="absolute top-4 left-4 z-20 space-y-2 pointer-events-none max-w-[180px]">
-                      {[1, 2, 3].map(i => (
+                      {[
+                        "TX_SYNC: NODE_21 -> VERIFIED",
+                        "TX_SYNC: NODE_56 -> VERIFIED",
+                        "TX_SYNC: NODE_73 -> VERIFIED"
+                      ].map((text, i) => (
                         <div key={i} className={`bg-slate-900/60 backdrop-blur-md border border-white/5 rounded-lg px-3 py-1.5 flex items-center gap-2 animate-fade-in-up`} style={{ animationDelay: `${i * 0.5}s` }}>
                            <div className="w-1 h-1 rounded-full bg-blue-400 animate-pulse"/>
                            <div className="text-[8px] font-mono text-blue-200 uppercase tracking-tight">
-                              {`TX_SYNC: NODE_${Math.floor(Math.random()*100)} -> VERIFIED`}
+                              {text}
                            </div>
                         </div>
                       ))}
@@ -1605,7 +1609,7 @@ export default function AppSimulation({ onBack }: { onBack: () => void }) {
                      { id: "vn", t: 40, l: 75, n: "VIETNAM_HUB", status: "Hoạt động", latency: "12ms", storage: "84%", load: 45 }, 
                      { id: "us", t: 25, l: 30, n: "NYC_NODE", status: "Đang đồng bộ", latency: "115ms", storage: "62%", load: 78 }, 
                      { id: "au", t: 60, l: 20, n: "SYDNEY_NODE", status: "Hoạt động", latency: "84ms", storage: "45%", load: 23 }, 
-                     { id: "jp", t: 35, l: 80, n: "TOKYO_LEDGER", status: "Chờ", latency: "42ms", storage: "91%", load: 12 }
+                     { id: "jp", t: 35, l: 80, n: "TOKYO_LE", status: "Chờ", latency: "42ms", storage: "91%", load: 12 }
                    ].map((node) => (
                      <button key={node.id} onClick={() => setSelectedNode(node as any)} 
                         className={`absolute flex flex-col items-center group/node transition-all ${selectedNode?.id === node.id ? 'z-40 scale-110' : 'z-20 hover:scale-105'}`} 

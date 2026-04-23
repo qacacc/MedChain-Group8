@@ -3,7 +3,8 @@ import Hero from "./Hero";
 import AppSimulation from "./AppSimulation";
 import AuthModal from "./components/AuthModal";
 import { auth } from "./firebase";
-import { onAuthStateChanged, User } from "firebase/auth";
+import { onAuthStateChanged } from "firebase/auth";
+import type { User } from "firebase/auth";
 
 function App() {
   const [page, setPage] = useState<"home" | "simulation">("home");
