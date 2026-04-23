@@ -2,20 +2,22 @@
 
 Đây là mã nguồn giao diện cho dự án "Ứng dụng Blockchain trong lưu trữ và bảo mật hồ sơ bệnh án điện tử" của Nhóm 8. Cấu trúc frontend sử dụng React (TypeScript) kết hợp với Vite, CSS thuần và cấu hình tích hợp Tailwind CSS mang lại trải nghiệm Web hiện đại, hiệu suất cao và chuẩn hóa.
 
+**🌐 WEBSITE CHÍNH THỨC ĐANG HOẠT ĐỘNG:** [https://medchain-group-8.web.app](https://medchain-group-8.web.app)
+
 ## ✨ Tính Năng Nổi Bật (Features)
 
 - **Giao diện hiện đại (Modern UI):** Sử dụng các hiệu ứng animation tinh tế (Fade Rise) và thiết kế typography chuyên nghiệp tập trung vào `Instrument Serif` & `Inter`.
-- **Liquid Glass Effect:** Hiệu ứng kính bóng mờ tinh xảo dành cho các component tương tác như nút bấm (Buttons), mang lại cảm giác thiết kế cao cấp (Premium UI).
+- **Hệ thống xác thực (Firebase Auth):** Đăng nhập/Đăng ký bảo mật, liên kết trực tiếp với hệ sinh thái Firebase.
 - **Tối ưu hóa Hiệu Suất (Performance Optimized):** Xây dựng bằng hệ sinh thái Vite + TypeScript đảm bảo việc phát triển (HMR) và build cực nhanh.
-- **Tích hợp Tailwind CSS:** Hệ thống Utility-first CSS giúp xây dựng giao diện nhanh chóng, dễ bảo trì, dễ thay đổi (Theming dựa trên HSL variables).
+- **Tích hợp Tailwind CSS:** Hệ thống Utility-first CSS giúp xây dựng giao diện nhanh chóng, dễ bảo trì.
 
 ## 🛠 Công Nghệ Sử Dụng (Tech Stack)
 
 - **Framework:** React 19
 - **Ngôn ngữ:** TypeScript
 - **Luồng Build & Phát Triển:** Vite 8
-- **Styling:** Tailwind CSS, PostCSS, Autoprefixer, kết hợp CSS Custom Properties.
-- **Code Quality:** ESLint
+- **Styling:** Tailwind CSS, PostCSS, Autoprefixer.
+- **Backend/Database:** Firebase (Auth, Firestore, Hosting)
 
 ## 🚀 Hướng Dẫn Cài Đặt và Khởi Chạy (Getting Started)
 
@@ -23,39 +25,52 @@
 - [Node.js](https://nodejs.org/) (Khuyến nghị phiên bản LTS mới nhất như v18 hoặc v20)
 - Trình quản lý gói `npm`, `yarn` hoặc `pnpm`.
 
-### 2. Cài đặt các thư viện phụ thuộc (Install Dependencies)
-Sau khi pull code về máy, chạy lệnh sau tại thư mục gốc:
+### 2. Cài đặt và Chạy thử nghiệm (Local Development)
+Sau khi tải code về máy, mở Terminal và chạy lần lượt các lệnh sau:
 ```bash
+# 1. Cài đặt các thư viện cần thiết
 npm install
-```
 
-### 3. Khởi chạy môi trường phát triển (Run Development Server)
-Khởi chạy Live Server qua Vite:
-```bash
+# 2. Cài đặt Firebase tools (Nếu muốn tự deploy)
+npm install firebase
+npm install -g firebase-tools
+
+# 3. Khởi chạy Server dev
 npm run dev
 ```
-Dự án sẽ khởi chạy tại URL [http://localhost:5173/](http://localhost:5173/). Mọi sửa đổi trong mã nguồn sẽ được hệ thống Hot Module Replacement (HMR) phản hồi lại ngay lập tức trên trình duyệt.
+Dự án sẽ khởi chạy tại URL [http://localhost:5173/](http://localhost:5173/). 
 
-### 4. Đóng gói cho Production (Build for Production)
+### 3. Hướng dẫn Deploy lên Firebase Hosting (Production)
+Để cập nhật website lên địa chỉ `https://medchain-group-8.web.app`, chạy các lệnh sau:
 ```bash
+# 1. Build mã nguồn ra thư mục dist/
 npm run build
+
+# 2. Đẩy lên Firebase Hosting
+firebase deploy
 ```
-Kết quả build hoàn chỉnh sẵn sàng để đẩy lên hosting sẽ được gom tại thư mục `dist`.
+
+## ⚠️ Lưu ý Cực Kỳ Quan Trọng về Firebase Authentication
+Nếu bạn gặp lỗi `auth/configuration-not-found` khi cố gắng tạo tài khoản hoặc đăng nhập, có nghĩa là tính năng Đăng nhập Email/Mật khẩu chưa được bật trên Firebase Console.
+**Cách khắc phục:**
+1. Truy cập vào [Firebase Console](https://console.firebase.google.com/) -> Chọn Project `medchain-group-8`.
+2. Ở thanh bên trái, chọn **Build** -> **Authentication**.
+3. Nhấp vào nút **Get Started**.
+4. Chọn tab **Sign-in method**, nhấp vào **Email/Password**.
+5. Bật công tắc (Enable) ở dòng đầu tiên (Email/Password) và bấm **Save**.
+6. Quay lại website, tính năng Đăng nhập/Đăng ký sẽ hoạt động hoàn hảo và dữ liệu người dùng sẽ được lưu!
 
 ## 📂 Tổ Chức Code (Folder Structure)
 
 ```text
 ├── src/
-│   ├── assets/       # Tài nguyên đồ hoạ tĩnh (hình ảnh, icons, v.v.)
-│   ├── App.tsx       # Component Root (Điểm bắt đầu của Cây Component)
-│   ├── Hero.tsx      # Component hiển thị Màn Hình Chính
-│   ├── index.css     # Định nghĩa Base CSS, Global CSS variables và tích hợp Tailwind
-│   └── main.tsx      # Entry file gắn kết React DOM với index.html
-├── index.html        # Khung HTML gốc chứa các thẻ meta và font CDN
+│   ├── assets/       # Tài nguyên đồ hoạ tĩnh
+│   ├── components/   # Các Component giao diện nhỏ (AuthModal)
+│   ├── App.tsx       # Component Root và Điều hướng Đăng nhập
+│   ├── AppSimulation.tsx # Mô phỏng Mạng lưới Node toàn cầu
+│   ├── firebase.ts   # Cấu hình API kết nối Firebase
+│   └── index.css     # Định nghĩa Base CSS, Animation Keyframes
+├── firebase.json     # Cấu hình Firebase Hosting
 ├── tailwind.config.js# Cấu hình TailwindCSS nội bộ
-├── vite.config.ts    # Cấu hình Bundle/Server của Vite
-└── package.json      # Mapping metadata và tracking dependencies
+└── package.json      # Dependencies
 ```
-
----
-*Ghi chú (Note): Giao diện đang ở giai đoạn hoàn thiện. Các chức năng chuyên mảng Blockchain (Lưu trữ và bảo mật) sẽ được module hóa và tích hợp dần theo tiến độ dự án.*
