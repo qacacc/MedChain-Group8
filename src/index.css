@@ -143,4 +143,24 @@ html {
   .animate-scanline {
     animation: scanline 8s linear infinite;
   }
+
+  @keyframes radar-rotate {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+  }
+  .animate-radar-rotate {
+    animation: radar-rotate 4s linear infinite;
+  }
+
+  @keyframes shimmer {
+    100% { transform: translateX(100%); }
+  }
+
+  @keyframes pulse-glow {
+    0%, 100% { opacity: 1; filter: drop-shadow(0 0 10px rgba(59,130,246,0.8)); }
+    50% { opacity: 0.5; filter: drop-shadow(0 0 2px rgba(59,130,246,0.3)); }
+  }
+  .animate-pulse-glow {
+    animation: pulse-glow 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  }
 }
