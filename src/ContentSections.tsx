@@ -1,21 +1,25 @@
 import { useState } from 'react';
 import BlockchainAnimation from './BlockchainAnimation';
-import { 
-  AlertTriangle, 
-  CheckCircle2, 
-  UserSquare2, 
-  BriefcaseMedical, 
-  Building2, 
-  Building, 
-  FileCheck2, 
-  GraduationCap, 
-  ChevronRight,
-  Database,
-  Lock,
-  Globe,
-  HeartPulse,
-  Network
-} from 'lucide-react';
+/* ═══════════════════════════════════════════════════════
+   MATERIAL ICONS HELPER
+═══════════════════════════════════════════════════════ */
+function MaterialIcon({ icon, size = 20, className = "", style = {}, fill = 0 }: { icon: string; size?: number; className?: string; style?: React.CSSProperties; fill?: number }) {
+  return (
+    <span 
+      className={`material-symbols-rounded ${className}`} 
+      style={{ 
+        fontSize: size, 
+        fontVariationSettings: `'OPSZ' 24, 'wght' 500, 'FILL' ${fill}, 'GRAD' 0`,
+        display: 'inline-flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        ...style 
+      }}
+    >
+      {icon}
+    </span>
+  );
+}
 
 export default function ContentSections() {
   const [activePersona, setActivePersona] = useState(0);
@@ -35,26 +39,26 @@ export default function ContentSections() {
       <div className="w-full bg-gradient-to-b from-white to-red-50 dark:from-[#0B1F3A] dark:to-red-900/10 py-24 px-4 sm:px-8 border-b border-gray-100 dark:border-white/5 relative overflow-hidden">
         <DecorBlobs colors={["bg-red-400/20", "bg-orange-400/20"]} />
         <section className="max-w-7xl mx-auto w-full relative z-10">
-          <div className="text-[#0E8A6E] dark:text-[#0fb88f] font-bold tracking-widest text-xs uppercase mb-2 animate-fade-in-up">Giai đoạn 1 · Thấu hiểu</div>
-        <h2 className="text-4xl md:text-5xl text-[#1a1a2e] dark:text-white mb-6 animate-blur-in" style={{ fontFamily: "'Instrument Serif', serif" }}>Vấn đề & Cơ hội</h2>
+          <div className="text-[#0E8A6E] dark:text-[#0fb88f] font-bold tracking-widest text-xs uppercase mb-2 animate-fade-in-up">Giai đoạn 1 · Phân tích tổng quan</div>
+        <h2 className="text-4xl md:text-5xl text-[#1a1a2e] dark:text-white mb-6 animate-blur-in" style={{ fontFamily: "'Instrument Serif', serif" }}>Thách thức & Cơ hội</h2>
         <p className="text-[#4a5568] dark:text-gray-300 max-w-2xl text-base md:text-lg mb-12 leading-relaxed animate-fade-in-up" style={{ animationDelay: '200ms' }}>
           Hệ thống hồ sơ bệnh án hiện tại tạo ra nhiều hệ quả nghiêm trọng cho bệnh nhân, bác sĩ và toàn hệ thống y tế.
         </p>
         
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
           {[
-            { title: "Phân mảnh dữ liệu", desc: "Bác sĩ khó truy xuất bệnh sử đầy đủ khi bệnh nhân chuyển tuyến điều trị.", icon: <AlertTriangle size={24} /> },
-            { title: "Rủi ro bảo mật", desc: "Dễ bị Ransomware/Hacker tấn công, dữ liệu bị mã hóa đòi tiền chuộc.", icon: <AlertTriangle size={24} /> },
-            { title: "Mất quyền kiểm soát", desc: "Bệnh nhân không sở hữu hay kiểm soát dữ liệu sức khỏe của chính mình.", icon: <AlertTriangle size={24} /> },
-            { title: "Gian lận bảo hiểm", desc: "Khó xác minh hồ sơ, chậm trễ bồi thường, dễ bị làm giả hồ sơ.", icon: <AlertTriangle size={24} /> },
-            { title: "Chi phí lưu trữ", desc: "Bệnh viện tốn chi phí lớn cho hạ tầng lưu trữ tập trung rời rạc.", icon: <AlertTriangle size={24} /> }
+            { title: "Phân mảnh dữ liệu", desc: "Bác sĩ khó truy xuất bệnh sử đầy đủ khi bệnh nhân chuyển tuyến điều trị.", icon: "warning" },
+            { title: "Rủi ro bảo mật", desc: "Dễ bị Ransomware/Hacker tấn công, dữ liệu bị mã hóa đòi tiền chuộc.", icon: "security" },
+            { title: "Mất quyền kiểm soát", desc: "Bệnh nhân không sở hữu hay kiểm soát dữ liệu sức khỏe của chính mình.", icon: "lock_person" },
+            { title: "Gian lận bảo hiểm", desc: "Khó xác minh hồ sơ, chậm trễ bồi thường, dễ bị làm giả hồ sơ.", icon: "gpp_maybe" },
+            { title: "Chi phí lưu trữ", desc: "Bệnh viện tốn chi phí lớn cho hạ tầng lưu trữ tập trung rời rạc.", icon: "database" }
           ].map((item, idx) => (
             <div 
               key={idx} 
               className="liquid-glass rounded-xl p-6 border-l-4 border-l-[#C0392B] hover:scale-[1.02] transition-transform animate-fade-in-up"
               style={{ animationDelay: `${idx * 150}ms` }}
             >
-              <div className="text-[#C0392B] mb-3">{item.icon}</div>
+              <div className="text-[#C0392B] mb-3"><MaterialIcon icon={item.icon} size={24} /></div>
               <h3 className="font-semibold text-[#1a1a2e] dark:text-white mb-2 text-base">{item.title}</h3>
               <p className="text-sm text-[#4a5568] dark:text-gray-400">{item.desc}</p>
             </div>
@@ -75,10 +79,10 @@ export default function ContentSections() {
 
         <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-6">
           {[
-            { icon: <Network size={28} />, title: "Tính Phân Tán", desc: "Dữ liệu EHR lưu đồng bộ trên mạng nhiều node. Hệ thống vận hành ngay cả khi một bệnh viện bị sự cố.", color: "text-blue-400", bg: "bg-blue-400/10" },
-            { icon: <Lock size={28} />, title: "Bảo Mật & Bất Biến", desc: "Mọi thông tin y tế được mã hóa mật mã học. Gần như không thể chỉnh sửa hay xóa bỏ trái phép.", color: "text-emerald-400", bg: "bg-emerald-400/10" },
-            { icon: <HeartPulse size={28} />, title: "Lấy Bệnh Nhân Làm Trung Tâm", desc: "Bệnh nhân làm chủ dữ liệu qua Private Key. Cấp quyền cho bác sĩ qua Smart Contract.", color: "text-amber-400", bg: "bg-amber-400/10" },
-            { icon: <CheckCircle2 size={28} />, title: "Truy Xuất & Minh Bạch", desc: "Mọi thao tác truy cập được ghi lịch sử rõ ràng, không thể xóa — ai truy cập lúc nào đều biết.", color: "text-red-400", bg: "bg-red-400/10" }
+            { icon: "hub", title: "Tính Phân Tán", desc: "Dữ liệu EHR lưu đồng bộ trên mạng nhiều node. Hệ thống vận hành ngay cả khi một bệnh viện bị sự cố.", color: "text-blue-400", bg: "bg-blue-400/10" },
+            { icon: "lock", title: "Bảo Mật & Bất Biến", desc: "Mọi thông tin y tế được mã hóa mật mã học. Gần như không thể chỉnh sửa hay xóa bỏ trái phép.", color: "text-emerald-400", bg: "bg-emerald-400/10" },
+            { icon: "vital_signs", title: "Lấy Bệnh Nhân Làm Trung Tâm", desc: "Bệnh nhân làm chủ dữ liệu qua Private Key. Cấp quyền cho bác sĩ qua Smart Contract.", color: "text-amber-400", bg: "bg-amber-400/10" },
+            { icon: "check_circle", title: "Truy Xuất & Minh Bạch", desc: "Mọi thao tác truy cập được ghi lịch sử rõ ràng, không thể xóa — ai truy cập lúc nào đều biết.", color: "text-red-400", bg: "bg-red-400/10" }
           ].map((pillar, idx) => (
             <div 
               key={idx} 
@@ -86,7 +90,7 @@ export default function ContentSections() {
               style={{ animationDelay: `${idx * 200}ms` }}
             >
               <div className={`p-4 rounded-xl mb-4 ${pillar.bg} ${pillar.color}`}>
-                {pillar.icon}
+                <MaterialIcon icon={pillar.icon} size={28} />
               </div>
               <h3 className="font-bold text-white mb-3 text-base">{pillar.title}</h3>
               <p className="text-sm text-gray-400 leading-relaxed">{pillar.desc}</p>
@@ -142,22 +146,22 @@ export default function ContentSections() {
       <div className="w-full bg-[#f8f9fc] py-24 px-4 sm:px-8 border-b border-gray-100 dark:border-white/5 relative overflow-hidden">
         <DecorBlobs colors={["bg-teal-500/10", "bg-emerald-500/10"]} />
         <section className="max-w-7xl mx-auto w-full animate-fade-in-up relative z-10" id="stakeholders">
-          <div className="text-[#0E8A6E] font-bold tracking-widest text-xs uppercase mb-2 animate-fade-in-up">Bên liên quan · Stakeholders</div>
-        <h2 className="text-4xl md:text-5xl text-black mb-6 animate-blur-in" style={{ fontFamily: "'Instrument Serif', serif" }}>Hệ sinh thái Blockchain EHR</h2>
+          <div className="text-[#0E8A6E] font-bold tracking-widest text-xs uppercase mb-2 animate-fade-in-up">Hệ sinh thái bên liên quan</div>
+        <h2 className="text-4xl md:text-5xl text-black mb-6 animate-blur-in" style={{ fontFamily: "'Instrument Serif', serif" }}>Các Đối Tượng Trong Hệ Sinh Thái EHR</h2>
         <p className="text-black max-w-2xl text-base md:text-lg mb-12 leading-relaxed animate-fade-in-up" style={{ animationDelay: '200ms' }}>
           Nhiều nhóm đối tượng với vai trò, quyền lợi và kỳ vọng khác nhau trong toàn hệ sinh thái.
         </p>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
           {[
-            { icon: <UserSquare2 size={24} />, name: "Bệnh nhân", role: "Chủ sở hữu dữ liệu — quản lý Private Key, cấp quyền truy cập EHR cá nhân", color: "text-[#0E8A6E]", bg: "bg-[#e0f5ef]" },
-            { icon: <BriefcaseMedical size={24} />, name: "Y bác sĩ & Điều dưỡng", role: "Người dùng hàng ngày — truy xuất, cập nhật hồ sơ bệnh nhân theo chuẩn HL7", color: "text-[#0B1F3A]", bg: "bg-[#e8edf5]" },
-            { icon: <Building2 size={24} />, name: "Ban quản lý BV", role: "Ra quyết định triển khai, giám sát chuyển đổi số, kỳ vọng giảm chi phí vận hành", color: "text-[#C47D0E]", bg: "bg-[#fef4e0]" },
-            { icon: <FileCheck2 size={24} />, name: "Cơ quan Bảo hiểm", role: "Verifier — xác minh Claims tự động qua Smart Contract, chống gian lận", color: "text-[#C0392B]", bg: "bg-[#fdf0ef]" },
-            { icon: <Building size={24} />, name: "Chính phủ / Bộ Y tế", role: "Cơ quan quản lý — ban hành chuẩn HL7/FHIR và luật bảo mật dữ liệu", color: "text-[#5B21B6]", bg: "bg-[#f0ecff]" },
-            { icon: <GraduationCap size={24} />, name: "Nhà nghiên cứu", role: "Data consumer — khai thác Big Data ẩn danh phục vụ nghiên cứu dịch tễ học", color: "text-[#065F46]", bg: "bg-[#ecfdf5]" },
-            { icon: <Database size={24} />, name: "Cộng đồng", role: "Hưởng lợi từ y tế minh bạch, giảm thời gian chờ & sai sót y khoa", color: "text-blue-500", bg: "bg-blue-50" },
-            { icon: <Globe size={24} />, name: "Môi trường", role: "Giảm hồ sơ giấy, sổ khám, phim X-quang nhựa — giảm rác thải y tế", color: "text-green-600", bg: "bg-green-50" }
+            { icon: "person", name: "Bệnh nhân", role: "Chủ sở hữu dữ liệu — quản lý Private Key, cấp quyền truy cập EHR cá nhân", color: "text-[#0E8A6E]", bg: "bg-[#e0f5ef]" },
+            { icon: "stethoscope", name: "Y bác sĩ & Điều dưỡng", role: "Người dùng hàng ngày — truy xuất, cập nhật hồ sơ bệnh nhân theo chuẩn HL7", color: "text-[#0B1F3A]", bg: "bg-[#e8edf5]" },
+            { icon: "domain", name: "Ban quản lý BV", role: "Ra quyết định triển khai, giám sát chuyển đổi số, kỳ vọng giảm chi phí vận hành", color: "text-[#C47D0E]", bg: "bg-[#fef4e0]" },
+            { icon: "assignment_turned_in", name: "Cơ quan Bảo hiểm", role: "Verifier — xác minh Claims tự động qua Smart Contract, chống gian lận", color: "text-[#C0392B]", bg: "bg-[#fdf0ef]" },
+            { icon: "corporate_fare", name: "Chính phủ / Bộ Y tế", role: "Cơ quan quản lý — ban hành chuẩn HL7/FHIR và luật bảo mật dữ liệu", color: "text-[#5B21B6]", bg: "bg-[#f0ecff]" },
+            { icon: "school", name: "Nhà nghiên cứu", role: "Data consumer — khai thác Big Data ẩn danh phục vụ nghiên cứu dịch tễ học", color: "text-[#065F46]", bg: "bg-[#ecfdf5]" },
+            { icon: "database", name: "Cộng đồng", role: "Hưởng lợi từ y tế minh bạch, giảm thời gian chờ & sai sót y khoa", color: "text-blue-500", bg: "bg-blue-50" },
+            { icon: "public", name: "Môi trường", role: "Giảm hồ sơ giấy, sổ khám, phim X-quang nhựa — giảm rác thải y tế", color: "text-green-600", bg: "bg-green-50" }
           ].map((item, idx) => (
             <div 
               key={idx} 
@@ -166,7 +170,7 @@ export default function ContentSections() {
             >
               <div className="flex items-center gap-4 mb-3">
                 <div className={`p-2 rounded-lg ${item.bg} ${item.color}`}>
-                  {item.icon}
+                  <MaterialIcon icon={item.icon} size={24} />
                 </div>
                 <div className="font-bold text-[#1a1a2e]">{item.name}</div>
               </div>
@@ -181,8 +185,8 @@ export default function ContentSections() {
       <div className="w-full bg-[#f8fafe] dark:bg-[#0B1F3A] py-24 px-4 sm:px-8 border-b border-gray-100 dark:border-white/5 relative overflow-hidden">
         <DecorBlobs colors={["bg-blue-400/10", "bg-cyan-400/10"]} />
         <section className="max-w-7xl mx-auto w-full relative z-10">
-          <div className="text-[#0E8A6E] dark:text-[#0fb88f] font-bold tracking-widest text-xs uppercase mb-2 animate-fade-in-up">Giai đoạn 2 · Rich Picture</div>
-          <h2 className="text-4xl md:text-5xl text-[#1a1a2e] dark:text-white mb-6 animate-blur-in" style={{ fontFamily: "'Instrument Serif', serif" }}>V. Rich Picture - 9 Bước Vận Hành</h2>
+          <div className="text-[#0E8A6E] dark:text-[#0fb88f] font-bold tracking-widest text-xs uppercase mb-2 animate-fade-in-up">Giai đoạn 2 · Quy trình vận hành</div>
+          <h2 className="text-4xl md:text-5xl text-[#1a1a2e] dark:text-white mb-6 animate-blur-in" style={{ fontFamily: "'Instrument Serif', serif" }}>Rich Picture - Quy Trình Vận Hành</h2>
           <p className="text-[#4a5568] dark:text-gray-400 max-w-2xl text-base md:text-lg mb-12 leading-relaxed animate-fade-in-up" style={{ animationDelay: '200ms' }}>
             Mô tả toàn bộ chu trình luồng dữ liệu từ lúc khởi tạo đến khi được ứng dụng thực tế.
           </p>
@@ -219,8 +223,8 @@ export default function ContentSections() {
       <div className="w-full bg-gradient-to-br from-[#f8fafe] to-[#e8edf5] dark:from-indigo-950/20 dark:to-blue-950/20 py-24 px-4 sm:px-8 border-b border-gray-100 dark:border-white/5 relative overflow-hidden">
         <DecorBlobs colors={["bg-blue-400/10", "bg-indigo-400/10"]} />
         <section className="max-w-7xl mx-auto w-full relative z-10" id="personas">
-          <div className="text-[#0E8A6E] dark:text-[#0fb88f] font-bold tracking-widest text-xs uppercase mb-2 animate-fade-in-up">Giai đoạn 3 · Persona Map</div>
-        <h2 className="text-4xl md:text-5xl text-[#1a1a2e] dark:text-white mb-6 animate-blur-in" style={{ fontFamily: "'Instrument Serif', serif" }}>VI. Persona - Chân Dung Người Dùng</h2>
+          <div className="text-[#0E8A6E] dark:text-[#0fb88f] font-bold tracking-widest text-xs uppercase mb-2 animate-fade-in-up">Giai đoạn 3 · Đối tượng người dùng</div>
+        <h2 className="text-4xl md:text-5xl text-[#1a1a2e] dark:text-white mb-6 animate-blur-in" style={{ fontFamily: "'Instrument Serif', serif" }}>Persona - Chân Dung Người Dùng</h2>
         <p className="text-[#4a5568] dark:text-gray-400 max-w-2xl text-base md:text-lg mb-12 leading-relaxed animate-fade-in-up" style={{ animationDelay: '200ms' }}>
           3 Persona đại diện dựa trên phỏng vấn sâu và quan sát thực tế với 12 người dùng.
         </p>
@@ -399,7 +403,7 @@ export default function ContentSections() {
           <div className="text-[#0E8A6E] dark:text-[#0fb88f] font-bold tracking-widest text-xs uppercase mb-2">Giai đoạn 3 · Hành trình</div>
           <h2 className="text-3xl md:text-4xl text-[#1a1a2e] dark:text-white mb-4" style={{ fontFamily: "'Instrument Serif', serif" }}>VIII. Customer Journey Map</h2>
           
-          <div className="mt-12 overflow-x-auto rounded-2xl border border-gray-100 dark:border-white/10 shadow-xl">
+          <div className="mt-12 overflow-x-auto rounded-2xl border border-gray-100 dark:border-white/10 shadow-xl scrollbar-hide">
             <table className="w-full text-left border-collapse bg-white dark:bg-transparent min-w-[800px]">
               <thead>
                 <tr className="bg-[#0B1F3A] text-white">
@@ -438,7 +442,7 @@ export default function ContentSections() {
           <div className="text-[#0E8A6E] dark:text-[#0fb88f] font-bold tracking-widest text-xs uppercase mb-2">Giai đoạn 3 · Đối soát</div>
           <h2 className="text-3xl md:text-4xl text-[#1a1a2e] dark:text-white mb-4" style={{ fontFamily: "'Instrument Serif', serif" }}>IX. So Sánh: Cũ vs. Blockchain EHR</h2>
           
-          <div className="mt-12 overflow-x-auto rounded-2xl border border-gray-100 dark:border-white/10 shadow-xl">
+          <div className="mt-12 overflow-x-auto rounded-2xl border border-gray-100 dark:border-white/10 shadow-xl scrollbar-hide">
             <table className="w-full text-left border-collapse bg-white dark:bg-transparent min-w-[800px]">
               <thead>
                 <tr className="bg-gray-50 dark:bg-white/5 border-b border-gray-100 dark:border-white/10">
@@ -565,7 +569,7 @@ export default function ContentSections() {
               <ul className="space-y-4">
                 {rm.items.map((item, i) => (
                   <li key={i} className="text-sm text-[#4a5568] flex items-start gap-2 group-hover:text-black transition-colors">
-                    <ChevronRight size={18} className={`shrink-0 ${rm.color} mt-0.5`} />
+                    <MaterialIcon icon="chevron_right" size={18} className={`shrink-0 ${rm.color} mt-0.5`} />
                     <span className="leading-relaxed font-medium">{item}</span>
                   </li>
                 ))}
@@ -580,8 +584,8 @@ export default function ContentSections() {
       <div className="w-full bg-[#0B1F3A] py-32 px-4 sm:px-8 relative overflow-hidden">
         <DecorBlobs colors={["bg-blue-600/10", "bg-teal-600/10"]} />
         <section className="max-w-7xl mx-auto w-full relative z-10" id="conclusion">
-          <div className="text-[#0fb88f] font-bold tracking-widest text-xs uppercase mb-4 animate-fade-in-up">Kết thúc · Nhóm 8</div>
-          <h2 className="text-5xl md:text-6xl text-white mb-8 animate-blur-in" style={{ fontFamily: "'Instrument Serif', serif" }}>XII. Kết Luận & Tương Lai</h2>
+          <div className="text-[#0fb88f] font-bold tracking-widest text-xs uppercase mb-4 animate-fade-in-up">Tổng kết · Nhóm 8</div>
+          <h2 className="text-5xl md:text-6xl text-white mb-8 animate-blur-in" style={{ fontFamily: "'Instrument Serif', serif" }}>Kết Luận & Định Hướng Tương Lai</h2>
           
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-20">
             <div className="bg-white/5 border border-white/10 rounded-2xl p-8 backdrop-blur-xl animate-fade-in-up" style={{ animationDelay: '100ms' }}>
