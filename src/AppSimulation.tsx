@@ -1591,7 +1591,7 @@ export default function AppSimulation({ onBack }: { onBack: () => void }) {
                    </svg>
 
                    {/* 5. Live Handshake Feed (Matrix Terminal Style) */}
-                   <div className="absolute top-6 left-6 z-20 space-y-2 pointer-events-none max-w-[220px]">
+                   <div className="absolute top-6 left-4 md:left-6 z-20 space-y-2 pointer-events-none max-w-[280px] md:max-w-[320px]">
                       <div className="text-[10px] font-black text-cyan-400 mb-2 tracking-[0.2em] animate-pulse">_SYS.LOG.STREAM</div>
                       {[
                         "TX_SYNC: NODE_21 -> VERIFIED",
@@ -1635,7 +1635,7 @@ export default function AppSimulation({ onBack }: { onBack: () => void }) {
 
                    {/* 7. Selected Node Modal (Liquid Glass Sidebar) */}
                    {selectedNode && (
-                     <div className="absolute right-0 top-0 bottom-0 w-80 bg-slate-900/95 backdrop-blur-3xl border-l-2 border-cyan-500/30 z-50 p-6 flex flex-col animate-blur-in shadow-[-20px_0_50px_rgba(0,0,0,0.8)]">
+                     <div className="absolute right-0 top-0 bottom-0 w-[300px] md:w-[380px] bg-slate-900/95 backdrop-blur-3xl border-l-2 border-cyan-500/30 z-50 p-5 md:p-6 flex flex-col animate-blur-in shadow-[-20px_0_50px_rgba(0,0,0,0.8)]">
                         <div className="flex justify-between items-center mb-6 border-b border-white/10 pb-4">
                            <div className="flex flex-col">
                               <div className="text-[9px] font-black text-cyan-500 font-mono uppercase tracking-[0.3em] mb-1 animate-pulse">NETWORK_TERMINAL</div>
