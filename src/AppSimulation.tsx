@@ -1542,39 +1542,23 @@ export default function AppSimulation({ onBack }: { onBack: () => void }) {
                    </div>
                 </div>
 
-                <div className="flex-1 relative rounded-3xl bg-slate-950 overflow-hidden shadow-[inset_0_0_60px_rgba(0,0,0,0.8)] border border-slate-800">
-                   {/* 1. Background Grid & Radar Scan (Sci-Fi Upgrade) */}
-                   <svg className="absolute inset-0 w-full h-full opacity-40" viewBox="0 0 1000 500" preserveAspectRatio="xMidYMid slice">
+                <div className="flex-1 relative rounded-3xl bg-slate-900 overflow-hidden border border-slate-800">
+                   {/* 1. Minimalist Background Grid */}
+                   <svg className="absolute inset-0 w-full h-full opacity-20" viewBox="0 0 1000 500" preserveAspectRatio="xMidYMid slice">
                       <defs>
-                         <pattern id="dotGrid" width="40" height="40" patternUnits="userSpaceOnUse">
-                            <circle cx="2" cy="2" r="1.5" fill="rgba(34,211,238,0.15)"/>
-                            <path d="M 40 0 L 0 0 0 40" fill="none" stroke="rgba(34,211,238,0.05)" strokeWidth="0.5"/>
+                         <pattern id="cleanGrid" width="60" height="60" patternUnits="userSpaceOnUse">
+                            <path d="M 60 0 L 0 0 0 60" fill="none" stroke="rgba(255,255,255,0.1)" strokeWidth="1"/>
                          </pattern>
-                         <radialGradient id="radarGradient" cx="50%" cy="50%" r="50%" fx="50%" fy="50%">
-                            <stop offset="0%" stopColor="rgba(34,211,238,0)" />
-                            <stop offset="80%" stopColor="rgba(34,211,238,0.05)" />
-                            <stop offset="100%" stopColor="rgba(34,211,238,0.3)" />
-                         </radialGradient>
                       </defs>
-                      <rect width="100%" height="100%" fill="url(#dotGrid)" className="animate-grid-fade"/>
-                      <circle cx="500" cy="250" r="350" fill="url(#radarGradient)" className="animate-radar-rotate origin-center"/>
-                      <circle cx="500" cy="250" r="350" fill="none" stroke="rgba(34,211,238,0.2)" strokeWidth="1" strokeDasharray="4 12"/>
-                      <circle cx="500" cy="250" r="250" fill="none" stroke="rgba(34,211,238,0.1)" strokeWidth="1"/>
-                      <circle cx="500" cy="250" r="150" fill="none" stroke="rgba(34,211,238,0.05)" strokeWidth="1"/>
-                      <line x1="500" y1="250" x2="500" y2="-100" stroke="rgba(34,211,238,0.6)" strokeWidth="2" className="animate-radar-rotate origin-center" filter="drop-shadow(0 0 8px rgba(34,211,238,0.8))"/>
+                      <rect width="100%" height="100%" fill="url(#cleanGrid)" />
                    </svg>
 
-                   {/* 2. Stylized World Continents (Cyberpunk Vector) */}
-                   <svg className="absolute inset-0 w-full h-full opacity-20 pointer-events-none" viewBox="0 0 1000 500" preserveAspectRatio="xMidYMid slice">
-                      <path d="M150,150 L200,100 L300,150 L450,200 L600,150 L800,250 L900,200 L950,450 L100,450 Z" fill="none" stroke="rgba(59,130,246,0.8)" strokeWidth="1" strokeDasharray="5 5" />
-                      <path d="M700,100 L750,50 L850,100 L950,150 L900,300 L650,250 Z" fill="rgba(59,130,246,0.1)" stroke="rgba(59,130,246,0.5)" strokeWidth="1"/>
-                      <path d="M200,350 L250,300 L350,350 L450,400 L400,480 L150,450 Z" fill="rgba(59,130,246,0.1)" stroke="rgba(59,130,246,0.5)" strokeWidth="1"/>
+                   {/* 2. Abstract Minimal Continents */}
+                   <svg className="absolute inset-0 w-full h-full opacity-[0.03] pointer-events-none" viewBox="0 0 1000 500" preserveAspectRatio="xMidYMid slice">
+                      <path d="M150,150 L200,100 L300,150 L450,200 L600,150 L800,250 L900,200 L950,450 L100,450 Z" fill="#ffffff" />
                    </svg>
 
-                   {/* 3. Scanline Animation Overlay */}
-                   <div className="absolute inset-0 w-full h-[2px] bg-cyan-400/40 shadow-[0_0_30px_#22d3ee] animate-scanline z-10 pointer-events-none"/>
-
-                   {/* 4. Glowing Connections (Sci-Fi Data Flow) */}
+                   {/* 3. Clean Data Connections */}
                    <svg className="absolute inset-0 w-full h-full z-0 pointer-events-none">
                       {[
                         { x1: "75%", y1: "40%", x2: "30%", y2: "25%" },
@@ -1583,31 +1567,29 @@ export default function AppSimulation({ onBack }: { onBack: () => void }) {
                         { x1: "20%", y1: "60%", x2: "75%", y2: "40%" }
                       ].map((l, i) => (
                         <g key={i}>
-                          <line x1={l.x1} y1={l.y1} x2={l.x2} y2={l.y2} className="stroke-cyan-500/20 stroke-[4px] blur-md"/>
-                          <line x1={l.x1} y1={l.y1} x2={l.x2} y2={l.y2} className="stroke-cyan-400/60 stroke-[1px] animate-line-flow" strokeDasharray="10 15"/>
-                          <circle r="3" fill="#22d3ee" className="animate-packet shadow-[0_0_15px_#22d3ee]" style={{ offsetPath: `path('M ${l.x1} ${l.y1} L ${l.x2} ${l.y2}')`, animationDelay: `${i * 1.2}s` }}/>
+                          <line x1={l.x1} y1={l.y1} x2={l.x2} y2={l.y2} className="stroke-blue-500/30 stroke-[1.5px]" strokeDasharray="4 4"/>
+                          <circle r="3" fill="#3b82f6" className="animate-packet" style={{ offsetPath: `path('M ${l.x1} ${l.y1} L ${l.x2} ${l.y2}')`, animationDelay: `${i * 1.5}s` }}/>
                         </g>
                       ))}
                    </svg>
 
-                   {/* 5. Live Handshake Feed (Matrix Terminal Style) */}
-                   <div className="absolute top-6 left-4 md:left-6 z-20 space-y-2 pointer-events-none max-w-[280px] md:max-w-[320px]">
-                      <div className="text-[10px] font-black text-cyan-400 mb-2 tracking-[0.2em] animate-pulse">_SYS.LOG.STREAM</div>
+                   {/* 4. Elegant Live TX Feed */}
+                   <div className="absolute top-6 left-6 z-20 space-y-2 pointer-events-none">
                       {[
                         "TX_SYNC: NODE_21 -> VERIFIED",
                         "TX_SYNC: NODE_56 -> VERIFIED",
                         "TX_SYNC: NODE_73 -> VERIFIED"
                       ].map((text, i) => (
-                        <div key={i} className={`bg-black/60 backdrop-blur-xl border-l-2 border-cyan-500 rounded-r-md px-3 py-2 flex items-center gap-3 animate-fade-in-up shadow-[0_0_15px_rgba(34,211,238,0.1)]`} style={{ animationDelay: `${i * 0.5}s` }}>
-                           <MaterialIcon icon="terminal" size={12} className="text-cyan-500"/>
-                           <div className="text-[9px] font-mono text-cyan-100 uppercase tracking-widest font-bold">
+                        <div key={i} className={`bg-white/5 backdrop-blur-md border border-white/10 rounded-full px-4 py-1.5 flex items-center gap-3 animate-fade-in-up`} style={{ animationDelay: `${i * 0.5}s` }}>
+                           <div className="w-1.5 h-1.5 rounded-full bg-blue-400 animate-pulse"/>
+                           <div className="text-[10px] font-medium text-slate-300 font-mono tracking-widest">
                               {text}
                            </div>
                         </div>
                       ))}
                    </div>
 
-                   {/* 6. Interactive Nodes (Hologram HUD) */}
+                   {/* 5. Minimalist Interactive Nodes */}
                    {[
                      { id: "vn", t: 40, l: 75, n: "VIETNAM_HUB", status: "Hoạt động", latency: "12ms", storage: "84%", load: 45 }, 
                      { id: "us", t: 25, l: 30, n: "NYC_NODE", status: "Đang đồng bộ", latency: "115ms", storage: "62%", load: 78 }, 
@@ -1615,65 +1597,56 @@ export default function AppSimulation({ onBack }: { onBack: () => void }) {
                      { id: "jp", t: 35, l: 80, n: "TOKYO_LE", status: "Chờ", latency: "42ms", storage: "91%", load: 12 }
                    ].map((node) => (
                      <button key={node.id} onClick={() => setSelectedNode(node as any)} 
-                        className={`absolute flex flex-col items-center group/node transition-all duration-500 ${selectedNode?.id === node.id ? 'z-40 scale-125' : 'z-20 hover:scale-110'}`} 
+                        className={`absolute flex flex-col items-center group/node transition-all duration-300 ${selectedNode?.id === node.id ? 'z-40 scale-110' : 'z-20 hover:scale-105'}`} 
                         style={{ top: `${node.t}%`, left: `${node.l}%` }}>
                         <div className="relative">
-                           <div className={`w-12 h-12 rounded-full border-2 backdrop-blur-3xl transition-all duration-500 flex items-center justify-center ${selectedNode?.id === node.id ? 'bg-cyan-900/80 border-cyan-400 shadow-[0_0_30px_rgba(34,211,238,0.8)]' : 'bg-slate-900/90 border-slate-600 group-hover/node:border-cyan-400 group-hover/node:bg-slate-800 group-hover/node:shadow-[0_0_20px_rgba(34,211,238,0.5)]'}`}>
-                              <MaterialIcon icon={node.id === 'vn' ? "hub" : "dns"} size={20} className={`transition-all duration-500 ${selectedNode?.id === node.id ? 'text-white animate-pulse-glow' : 'text-slate-400 group-hover/node:text-cyan-400'}`}/>
+                           <div className={`w-10 h-10 rounded-full transition-all duration-300 flex items-center justify-center ${selectedNode?.id === node.id ? 'bg-blue-500 shadow-lg shadow-blue-500/40 text-white' : 'bg-slate-800 border border-slate-700 text-slate-400 group-hover/node:bg-slate-700 group-hover/node:text-blue-400'}`}>
+                              <MaterialIcon icon={node.id === 'vn' ? "hub" : "dns"} size={20} />
                            </div>
-                           <div className={`absolute -inset-4 rounded-full opacity-0 group-hover/node:opacity-100 transition-opacity duration-700 blur-xl ${node.status === 'Hoạt động' ? 'bg-cyan-500/30' : 'bg-blue-500/30'}`}/>
-                           
-                           {/* Targeting Crosshair Elements */}
-                           <div className="absolute -inset-2 border border-cyan-500/30 rounded-full opacity-0 group-hover/node:opacity-100 animate-[spin_4s_linear_infinite] pointer-events-none border-dashed"/>
-                           <div className="absolute -inset-1 border-t-2 border-l-2 border-cyan-400 opacity-0 group-hover/node:opacity-100 rounded-tl-full pointer-events-none"/>
+                           {/* Status dot */}
+                           <div className={`absolute top-0 right-0 w-3 h-3 rounded-full border-2 border-slate-900 ${node.status === 'Hoạt động' ? 'bg-emerald-500' : 'bg-amber-500'}`}/>
                         </div>
-                        <div className={`mt-3 bg-slate-950/90 border px-3 py-1.5 rounded-sm text-[9px] font-black text-cyan-300 font-mono tracking-[0.2em] transition-all transform shadow-[0_0_15px_rgba(0,0,0,0.8)] ${selectedNode?.id === node.id ? 'opacity-100 translate-y-0 border-cyan-500/50' : 'opacity-0 translate-y-2 border-white/10 group-hover/node:opacity-100 group-hover/node:translate-y-0'}`}>
+                        <div className={`mt-2 bg-slate-800/90 backdrop-blur-sm border px-3 py-1.5 rounded-full text-[10px] font-bold text-white transition-all transform shadow-sm ${selectedNode?.id === node.id ? 'opacity-100 translate-y-0 border-blue-500/50' : 'opacity-0 translate-y-1 border-white/5 group-hover/node:opacity-100 group-hover/node:translate-y-0'}`}>
                            {node.n}
                         </div>
                      </button>
                    ))}
 
-                   {/* 7. Selected Node Modal (Liquid Glass Sidebar) */}
+                   {/* 6. Clean Selected Node Panel */}
                    {selectedNode && (
-                     <div className="absolute right-0 top-0 bottom-0 w-[300px] md:w-[380px] bg-slate-900/95 backdrop-blur-3xl border-l-2 border-cyan-500/30 z-50 p-5 md:p-6 flex flex-col animate-blur-in shadow-[-20px_0_50px_rgba(0,0,0,0.8)]">
-                        <div className="flex justify-between items-center mb-6 border-b border-white/10 pb-4">
+                     <div className="absolute right-0 top-0 bottom-0 w-[320px] bg-slate-900/95 backdrop-blur-2xl border-l border-slate-800 z-50 flex flex-col animate-blur-in shadow-2xl">
+                        <div className="p-6 border-b border-slate-800 flex justify-between items-center bg-slate-800/30">
                            <div className="flex flex-col">
-                              <div className="text-[9px] font-black text-cyan-500 font-mono uppercase tracking-[0.3em] mb-1 animate-pulse">NETWORK_TERMINAL</div>
-                              <div className="text-lg font-black text-white uppercase tracking-wider">{selectedNode.n}</div>
+                              <div className="text-[10px] font-bold text-slate-500 uppercase tracking-widest mb-1">Node Terminal</div>
+                              <div className="text-lg font-black text-white">{selectedNode.n}</div>
                            </div>
-                           <button onClick={() => setSelectedNode(null)} className="w-8 h-8 rounded-full flex items-center justify-center bg-white/5 hover:bg-red-500/20 text-slate-400 hover:text-red-400 transition-all hover:rotate-90"><MaterialIcon icon="close" size={18}/></button>
+                           <button onClick={() => setSelectedNode(null)} className="p-2 rounded-full hover:bg-slate-800 text-slate-400 hover:text-white transition-colors"><MaterialIcon icon="close" size={20}/></button>
                         </div>
                         
-                        <div className="space-y-4 flex-1 overflow-y-auto pr-2 custom-scrollbar">
+                        <div className="p-6 space-y-3 flex-1 overflow-y-auto">
                            {[
-                             { l: "Trạng thái", v: selectedNode.status, i: "language", c: selectedNode.status === 'Hoạt động' ? 'text-cyan-400' : 'text-blue-400', p: 100 },
-                             { l: "Độ trễ (Ping)", v: selectedNode.latency, i: "bolt", p: 85 },
+                             { l: "Trạng thái", v: selectedNode.status, i: "language", c: selectedNode.status === 'Hoạt động' ? 'text-emerald-500' : 'text-blue-500', p: 100 },
+                             { l: "Độ trễ", v: selectedNode.latency, i: "bolt", p: 85 },
                              { l: "Lưu trữ", v: selectedNode.storage, i: "data_usage", p: parseInt(selectedNode.storage) },
-                             { l: "Tin cậy", v: "HẠNG A+", i: "verified", c: "text-emerald-400", p: 98 }
+                             { l: "Tin cậy", v: "Hạng A+", i: "verified", c: "text-emerald-500", p: 98 }
                            ].map(m => (
-                             <div key={m.l} className="bg-slate-800/50 rounded-xl p-4 border border-white/5 group/metric hover:bg-slate-800 hover:border-cyan-500/30 transition-all duration-300 relative overflow-hidden">
-                                <div className="absolute inset-0 bg-gradient-to-r from-cyan-500/0 via-cyan-500/5 to-cyan-500/0 -translate-x-full group-hover/metric:animate-[shimmer_2s_infinite]"/>
-                                <div className="flex items-center gap-2 mb-2 relative z-10">
-                                   <div className="w-6 h-6 rounded-md bg-black/30 flex items-center justify-center text-slate-400 group-hover/metric:text-cyan-400 transition-colors">
-                                      <MaterialIcon icon={m.i} size={14}/>
+                             <div key={m.l} className="bg-slate-800/50 rounded-2xl p-4 flex items-center justify-between border border-slate-700/50">
+                                <div className="flex items-center gap-3">
+                                   <div className="w-8 h-8 rounded-full bg-slate-800 flex items-center justify-center text-slate-400">
+                                      <MaterialIcon icon={m.i} size={16}/>
                                    </div>
-                                   <span className="text-[10px] font-black text-slate-400 uppercase tracking-widest">{m.l}</span>
-                                </div>
-                                <div className={`text-xl font-black font-mono mb-3 relative z-10 ${m.c || 'text-white'}`}>{m.v}</div>
-                                <div className="w-full h-1.5 bg-black/50 rounded-full overflow-hidden relative z-10 shadow-inner">
-                                   <div className={`h-full transition-all duration-1000 delay-300 ${m.c ? 'bg-cyan-500 shadow-[0_0_8px_#06b6d4]' : 'bg-blue-500'}`} style={{ width: `${m.p}%` }}/>
+                                   <div>
+                                     <div className="text-[10px] font-bold text-slate-500 uppercase tracking-widest mb-0.5">{m.l}</div>
+                                     <div className={`text-sm font-bold ${m.c || 'text-white'}`}>{m.v}</div>
+                                   </div>
                                 </div>
                              </div>
                            ))}
                         </div>
 
-                        <div className="mt-6 pt-6 border-t border-white/10">
-                           <div className="flex items-center justify-between mb-4">
-                              <div className="text-[9px] font-black text-slate-500 uppercase tracking-widest">Sys Hash:</div>
-                              <div className="text-[10px] font-mono text-cyan-400 truncate ml-2">0x{Math.random().toString(16).slice(2, 16)}</div>
-                           </div>
-                           <button className="w-full py-4 rounded-xl bg-cyan-600/20 hover:bg-cyan-500 text-cyan-400 hover:text-white border border-cyan-500/50 text-[11px] font-black uppercase tracking-[0.2em] transition-all shadow-[0_0_15px_rgba(6,182,212,0.2)] hover:shadow-[0_0_25px_rgba(6,182,212,0.6)] active:scale-95 flex items-center justify-center gap-2 group/btn">
-                              <MaterialIcon icon="sync" size={18} className="group-hover/btn:rotate-180 transition-transform duration-700"/> Force Sync
+                        <div className="p-6 bg-slate-800/30 border-t border-slate-800">
+                           <button className="w-full py-3 rounded-xl bg-blue-600 hover:bg-blue-700 text-white text-xs font-bold transition-all shadow-md active:scale-95 flex items-center justify-center gap-2">
+                              <MaterialIcon icon="sync" size={18}/> Đồng bộ dữ liệu
                            </button>
                         </div>
                      </div>
