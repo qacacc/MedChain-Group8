@@ -11,6 +11,7 @@ function App() {
   const [page, setPage] = useState<"home" | "simulation">("home");
   const [showAuth, setShowAuth] = useState(false);
   const [user, setUser] = useState<User | null>(null);
+  const [isGuest, setIsGuest] = useState(false);
 
   useEffect(() => {
     const handleEmailLink = async () => {
@@ -58,11 +59,17 @@ function App() {
   }, []);
 
   const handleOpenSimulation = () => {
-    if (user) {
+    if (user || isGuest) {
       setPage("simulation");
     } else {
       setShowAuth(true);
     }
+  };
+
+  const handleGuestLogin = () => {
+    setIsGuest(true);
+    setShowAuth(false);
+    setPage("simulation");
   };
 
   if (page === "simulation") {
@@ -75,6 +82,7 @@ function App() {
       {showAuth && (
         <AuthModal 
           onClose={() => setShowAuth(false)} 
+          onGuestLogin={handleGuestLogin}
         />
       )}
     </>

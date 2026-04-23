@@ -17,10 +17,11 @@ function MaterialIcon({ icon, size = 24, className = "", fill = 0, style = {} }:
 
 interface AuthModalProps {
   onClose: () => void;
+  onGuestLogin: () => void;
   onSuccess?: () => void; // For email link, success is handled in App.tsx after redirect
 }
 
-export default function AuthModal({ onClose }: AuthModalProps) {
+export default function AuthModal({ onClose, onGuestLogin }: AuthModalProps) {
   const [email, setEmail] = useState('');
   const [fullName, setFullName] = useState('');
   const [role, setRole] = useState('patient');
@@ -199,6 +200,18 @@ export default function AuthModal({ onClose }: AuthModalProps) {
                 <p className="text-[10px] text-center text-slate-500 mt-4 leading-relaxed font-medium">
                   Bằng việc tiếp tục, dữ liệu của bạn sẽ được mã hóa và ghi danh vào sổ cái Blockchain MedChain Nexus.
                 </p>
+                
+                <div className="mt-4 pt-4 border-t border-slate-800 flex flex-col items-center">
+                  <span className="text-[10px] font-bold text-slate-500 uppercase tracking-widest mb-3">Hoặc</span>
+                  <button 
+                    type="button"
+                    onClick={onGuestLogin}
+                    className="w-full py-3 rounded-xl border border-slate-700 hover:bg-slate-800 text-slate-300 hover:text-white text-[11px] font-black uppercase tracking-[0.2em] transition-all flex items-center justify-center gap-2"
+                  >
+                    <MaterialIcon icon="visibility" size={18} />
+                    Tiếp tục với tư cách Khách
+                  </button>
+                </div>
               </div>
             </form>
           )}
