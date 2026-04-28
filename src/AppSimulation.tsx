@@ -971,30 +971,30 @@ function DoctorPortal({ onBack, records, setRecords, patient, setPatient }: { on
             <div className="p-6 space-y-5">
               <div className="grid grid-cols-2 gap-4">
                  <div>
-                   <label className="block text-[10px] font-bold uppercase tracking-widest mb-1.5 text-slate-400">Chuyên khoa</label>
+                   <label className="block text-[11px] font-bold uppercase tracking-widest mb-1.5 text-slate-700">Chuyên khoa</label>
                    <select value={form.specialty} onChange={e => setForm({ ...form, specialty: e.target.value })}
-                     className="w-full px-4 py-2.5 rounded-xl border-2 border-slate-100 outline-none text-sm bg-slate-50 focus:border-blue-500 transition-all">
+                     className="w-full px-4 py-2.5 rounded-xl border-2 border-slate-200 outline-none text-sm bg-white text-slate-900 focus:border-blue-500 transition-all">
                      {specialties.map(s => <option key={s} value={s}>{s}</option>)}
                    </select>
                  </div>
                  <div>
-                   <label className="block text-[10px] font-bold uppercase tracking-widest mb-1.5 text-slate-400">Mã ICD-10</label>
+                   <label className="block text-[11px] font-bold uppercase tracking-widest mb-1.5 text-slate-700">Mã ICD-10</label>
                    <input value={form.icd10} onChange={e => setForm({ ...form, icd10: e.target.value })}
-                     placeholder="Vd: I10, E11.9..." className="w-full px-4 py-2.5 rounded-xl border-2 border-slate-100 outline-none text-sm bg-slate-50 focus:border-blue-500 transition-all"
+                     placeholder="Vd: I10, E11.9..." className="w-full px-4 py-2.5 rounded-xl border-2 border-slate-200 outline-none text-sm bg-white text-slate-900 placeholder:text-slate-400 focus:border-blue-500 transition-all"
                    />
                  </div>
               </div>
 
               <div>
-                <label className="block text-[10px] font-bold uppercase tracking-widest mb-1.5 text-slate-400">Chẩn đoán lâm sàng *</label>
+                <label className="block text-[11px] font-bold uppercase tracking-widest mb-1.5 text-slate-700">Chẩn đoán lâm sàng <span className="text-red-500">*</span></label>
                 <input value={form.diagnosis} onChange={e => setForm({ ...form, diagnosis: e.target.value })}
-                  placeholder="Vd: Tăng huyết áp vô căn..." className="w-full px-4 py-2.5 rounded-xl border-2 border-slate-100 outline-none text-sm bg-slate-50 focus:border-blue-500 transition-all"
+                  placeholder="Vd: Tăng huyết áp vô căn..." className="w-full px-4 py-2.5 rounded-xl border-2 border-slate-200 outline-none text-sm bg-white text-slate-900 placeholder:text-slate-400 focus:border-blue-500 transition-all"
                 />
               </div>
 
               {/* Vitals Input */}
               <div>
-                <label className="block text-[10px] font-bold uppercase tracking-widest mb-2 text-slate-400">Chỉ số sinh hiệu (Vitals)</label>
+                <label className="block text-[11px] font-bold uppercase tracking-widest mb-2 text-slate-700">Chỉ số sinh hiệu (Vitals)</label>
                 <div className="grid grid-cols-4 gap-2">
                    {[
                      { l: "BP", k: "bp", p: "120/80" },
@@ -1013,16 +1013,16 @@ function DoctorPortal({ onBack, records, setRecords, patient, setPatient }: { on
               </div>
 
               <div className="pt-2">
-                <label className="block text-[10px] font-bold uppercase tracking-widest mb-1.5 text-slate-400">Y lệnh & Thuốc</label>
+                <label className="block text-[11px] font-bold uppercase tracking-widest mb-1.5 text-slate-700">Y lệnh & Thuốc</label>
                 <textarea rows={2} value={form.medicines} onChange={e => setForm({ ...form, medicines: e.target.value })}
-                  placeholder="Vd: Metformin: 500mg (2 lần/ngày)..." className="w-full px-4 py-2.5 rounded-xl border-2 border-slate-100 outline-none text-sm bg-slate-50 focus:border-blue-500 transition-all resize-none"
+                  placeholder="Vd: Metformin: 500mg (2 lần/ngày)..." className="w-full px-4 py-2.5 rounded-xl border-2 border-slate-200 outline-none text-sm bg-white text-slate-900 placeholder:text-slate-400 focus:border-blue-500 transition-all resize-none"
                 />
               </div>
 
               <div>
-                <label className="block text-[10px] font-bold uppercase tracking-widest mb-1.5 text-slate-400">Ghi chú & Dặn dò</label>
+                <label className="block text-[11px] font-bold uppercase tracking-widest mb-1.5 text-slate-700">Ghi chú & Dặn dò</label>
                 <textarea rows={2} value={form.notes} onChange={e => setForm({ ...form, notes: e.target.value })}
-                  placeholder="Lời dặn của truyền..." className="w-full px-4 py-2.5 rounded-xl border-2 border-slate-100 outline-none text-sm bg-slate-50 focus:border-blue-500 transition-all resize-none"
+                  placeholder="Lời dặn dò sau khám bệnh..." className="w-full px-4 py-2.5 rounded-xl border-2 border-slate-200 outline-none text-sm bg-white text-slate-900 placeholder:text-slate-400 focus:border-blue-500 transition-all resize-none"
                 />
               </div>
 
@@ -1525,7 +1525,7 @@ export default function AppSimulation({ onBack }: { onBack: () => void }) {
 
            <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
              {/* Map Card - Ultimate High-Fidelity (Dark Theme Unified) */}
-             <div className="rounded-[2.5rem] border border-slate-800 bg-slate-900 p-8 shadow-2xl relative overflow-hidden h-[520px] group/map lg:col-span-2 flex flex-col">
+             <div className="rounded-3xl border border-slate-800 bg-slate-900 p-6 shadow-2xl relative overflow-hidden group/map lg:col-span-2 flex flex-col" style={{ minHeight: '460px' }}>
                 <div className="flex justify-between items-start mb-6 relative z-20">
                    <div>
                       <div className="flex items-center gap-2 mb-2">
@@ -1669,8 +1669,8 @@ export default function AppSimulation({ onBack }: { onBack: () => void }) {
                 </div>
              </div>
 
-             {/* Performance Metrics Card - Now styled to match and placed alongside */}
-             <div className="rounded-[2.5rem] border border-slate-800 p-8 shadow-2xl relative overflow-hidden text-white lg:col-span-1 flex flex-col h-[520px]" style={{ background: "linear-gradient(135deg, #0f172a, #1e293b)" }}>
+             {/* Performance Metrics Card */}
+             <div className="rounded-3xl border border-slate-800 p-6 shadow-2xl relative overflow-hidden text-white lg:col-span-1 flex flex-col" style={{ background: "linear-gradient(135deg, #0f172a, #1e293b)", minHeight: '460px' }}>
                 <div className="absolute top-0 right-0 p-4 opacity-5"><MaterialIcon icon="hub" size={160}/></div>
                 
                 <div className="flex items-center gap-2 mb-8 relative z-10">

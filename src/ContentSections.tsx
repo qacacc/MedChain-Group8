@@ -580,6 +580,138 @@ export default function ContentSections() {
         </section>
       </div>
 
+      {/* NEW: 12. CÁC GIAI ĐOẠN XÂY DỰNG NGUYÊN MẪU */}
+      <div className="w-full bg-white dark:bg-[#0B1F3A]/60 py-24 px-4 sm:px-8 border-b border-gray-100 dark:border-white/5 relative overflow-hidden">
+        <DecorBlobs colors={["bg-blue-400/10", "bg-teal-400/10"]} />
+        <section className="max-w-7xl mx-auto w-full relative z-10" id="prototype-stages">
+          <div className="text-[#0E8A6E] dark:text-[#0fb88f] font-bold tracking-widest text-xs uppercase mb-2 animate-fade-in-up">Giai đoạn 4 · Xây dựng</div>
+          <h2 className="text-4xl md:text-5xl text-[#1a1a2e] dark:text-white mb-6 animate-blur-in" style={{ fontFamily: "'Instrument Serif', serif" }}>XII. Các Giai Đoạn Xây Dựng Nguyên Mẫu</h2>
+          <p className="text-[#4a5568] dark:text-gray-400 max-w-2xl text-base md:text-lg mb-12 leading-relaxed animate-fade-in-up" style={{ animationDelay: '200ms' }}>
+            Nhóm xây dựng website mô phỏng MedChain theo quy trình 5 bước Tư duy Thiết kế — từ nghiên cứu người dùng đến nguyên mẫu tương tác độ trung thực cao.
+          </p>
+
+          <div className="relative">
+            {/* Vertical timeline line */}
+            <div className="absolute left-6 top-0 bottom-0 w-0.5 bg-gradient-to-b from-[#0E8A6E] to-transparent hidden md:block" />
+            <div className="space-y-8">
+              {[
+                {
+                  step: "01", phase: "Giai đoạn 1 · Thấu hiểu",
+                  title: "Nghiên cứu người dùng & Stakeholder Map",
+                  desc: "Phỏng vấn sâu 12 người dùng thực tế, xây dựng 3 Persona đại diện (Bệnh nhân mãn tính, Bác sĩ Nội khoa, Nhân viên Bảo hiểm) và xác định 6 nhóm bên liên quan chính trong hệ sinh thái.",
+                  outputs: ["3 Persona chi tiết", "Stakeholder Map 6 nhóm", "Bản đồ Đồng cảm (Empathy Map)", "Customer Journey Map 6 giai đoạn"],
+                  icon: "people", color: "#0E8A6E"
+                },
+                {
+                  step: "02", phase: "Giai đoạn 2 · Xác định",
+                  title: "Phân tích 5 vấn đề cốt lõi",
+                  desc: "Tổng hợp dữ liệu nghiên cứu để xác định 5 vấn đề trọng tâm: phân mảnh dữ liệu, rủi ro bảo mật, mất quyền kiểm soát, gian lận bảo hiểm và chi phí lưu trữ cao.",
+                  outputs: ["POV Statement cho từng Persona", "How Might We Questions", "Problem Statement chính thức"],
+                  icon: "search", color: "#C47D0E"
+                },
+                {
+                  step: "03", phase: "Giai đoạn 3 · Ý tưởng",
+                  title: "Thiết kế giải pháp Blockchain EHR 4 trụ cột",
+                  desc: "Đề xuất kiến trúc hệ thống 4 lớp và 3 Smart Contract cốt lõi: EHRRegistry, AccessControl và InsuranceClaims — tất cả xây dựng trên nền Hyperledger Fabric.",
+                  outputs: ["Kiến trúc hệ thống 4 lớp", "3 Smart Contract thiết kế", "Rich Picture quy trình vận hành", "Bảng so sánh 10 tiêu chí"],
+                  icon: "lightbulb", color: "#5B21B6"
+                },
+                {
+                  step: "04", phase: "Giai đoạn 4 · Nguyên mẫu",
+                  title: "Website mô phỏng MedChain (React + TypeScript)",
+                  desc: "Xây dựng prototype tương tác với 5 cổng: Patient Portal (hồ sơ + Digital Twin + QR cấp cứu), Doctor Portal (khám + ICD-10), Insurance Dashboard (AI Claims), Pharmacy Portal và Blockchain Explorer.",
+                  outputs: ["Patient Portal đầy đủ tính năng", "Doctor Portal ghi EHR", "Insurance Claims + AI Score", "Blockchain Explorer", "Emergency QR Code"],
+                  icon: "code", color: "#0B1F3A"
+                },
+                {
+                  step: "05", phase: "Giai đoạn 5 · Kiểm nghiệm",
+                  title: "Thu thập phản hồi từ 31 người dùng kiểm nghiệm",
+                  desc: "Phát hiện và giải quyết 6 thách thức lớn: mất Private Key → Social Recovery, người già → Guardian Account, latency cấp cứu → Hybrid Architecture, chi phí → định giá phân tầng.",
+                  outputs: ["6 thách thức & giải pháp điều chỉnh", "Lộ trình 3 giai đoạn 5 năm", "Kế hoạch triển khai Pilot"],
+                  icon: "verified", color: "#C0392B"
+                }
+              ].map((stage, idx) => (
+                <div key={idx} className="flex gap-6 animate-fade-in-up" style={{ animationDelay: `${idx * 150}ms` }}>
+                  <div className="relative shrink-0 hidden md:flex flex-col items-center">
+                    <div className="w-12 h-12 rounded-full flex items-center justify-center text-white font-black text-sm z-10 shadow-lg" style={{ background: stage.color }}>
+                      {stage.step}
+                    </div>
+                  </div>
+                  <div className="flex-1 liquid-glass rounded-2xl p-6 border border-gray-100 dark:border-white/5 hover:-translate-y-1 transition-transform">
+                    <div className="flex flex-col md:flex-row md:items-start gap-4">
+                      <div className="flex-1">
+                        <div className="text-[10px] font-bold uppercase tracking-widest mb-1" style={{ color: stage.color }}>{stage.phase}</div>
+                        <h3 className="font-bold text-[#1a1a2e] dark:text-white text-lg mb-2">{stage.title}</h3>
+                        <p className="text-sm text-[#4a5568] dark:text-gray-400 leading-relaxed mb-4">{stage.desc}</p>
+                        <div className="flex flex-wrap gap-2">
+                          {stage.outputs.map((o, i) => (
+                            <span key={i} className="text-[10px] font-bold px-2.5 py-1 rounded-full" style={{ background: `${stage.color}15`, color: stage.color, border: `1px solid ${stage.color}30` }}>
+                              ✓ {o}
+                            </span>
+                          ))}
+                        </div>
+                      </div>
+                      <div className="shrink-0 w-12 h-12 rounded-xl flex items-center justify-center" style={{ background: `${stage.color}15` }}>
+                        <MaterialIcon icon={stage.icon} size={24} style={{ color: stage.color }} fill={1} />
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+      </div>
+
+      {/* NEW: 13. KẾT QUẢ ĐO LƯỜNG TÁC ĐỘNG */}
+      <div className="w-full bg-[#0B1F3A] py-24 px-4 sm:px-8 border-b border-white/5 relative overflow-hidden">
+        <DecorBlobs colors={["bg-teal-500/10", "bg-blue-500/10"]} />
+        <section className="max-w-7xl mx-auto w-full relative z-10" id="impact">
+          <div className="text-[#0fb88f] font-bold tracking-widest text-xs uppercase mb-2 animate-fade-in-up">Giai đoạn 5 · Kết quả</div>
+          <h2 className="text-4xl md:text-5xl text-white mb-6 animate-blur-in" style={{ fontFamily: "'Instrument Serif', serif" }}>XIII. Kết Quả Kiểm Nghiệm & Chỉ Số Tác Động</h2>
+          <p className="text-gray-400 max-w-2xl text-base md:text-lg mb-12 leading-relaxed animate-fade-in-up" style={{ animationDelay: '200ms' }}>
+            Phản hồi thực tế từ 31 người dùng kiểm nghiệm và chỉ số tác động dự kiến khi triển khai quy mô.
+          </p>
+
+          {/* Impact Stats */}
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-16">
+            {[
+              { n: "85%", l: "Lo ngại bảo mật thông tin y tế", c: "#0fb88f" },
+              { n: "30→3", l: "Ngày xử lý Claims bảo hiểm", c: "#60a5fa" },
+              { n: "91%", l: "Muốn kiểm soát quyền truy cập EHR", c: "#a78bfa" },
+              { n: "-50%", l: "Chi phí lưu trữ nhờ phân tán", c: "#fb923c" },
+            ].map((s, i) => (
+              <div key={i} className="bg-white/5 border border-white/10 rounded-2xl p-6 text-center animate-fade-in-up" style={{ animationDelay: `${i * 100}ms` }}>
+                <div className="text-3xl md:text-4xl font-black mb-2" style={{ color: s.c, fontFamily: "'Outfit', sans-serif" }}>{s.n}</div>
+                <div className="text-[11px] text-gray-400 font-medium leading-tight">{s.l}</div>
+              </div>
+            ))}
+          </div>
+
+          {/* Challenges & Solutions */}
+          <h3 className="text-xl font-bold text-white mb-6">Thách thức phát hiện & Giải pháp điều chỉnh</h3>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+            {[
+              { t: "Mất Private Key", q: "\"Nếu mất điện thoại, mất quyền truy cập hồ sơ không?\"", s: "Social Recovery: 3/5 người tin cậy xác nhận để phục hồi" },
+              { t: "Guardian Account", q: "\"Người già và trẻ em quản lý Private Key thế nào?\"", s: "Tài khoản giám hộ với quyền hạn giới hạn, kiểm soát bởi người thân" },
+              { t: "Latency cấp cứu", q: "\"Blockchain có đủ nhanh trong tình huống khẩn cấp không?\"", s: "Kiến trúc Hybrid: dữ liệu khẩn cấp cache Off-chain, đồng bộ On-chain sau" },
+              { t: "Chi phí tuyến tỉnh", q: "\"Chi phí triển khai cho bệnh viện tuyến tỉnh có quá cao?\"", s: "Mô hình định giá phân tầng theo quy mô (tuyến tỉnh, trung ương)" },
+              { t: "Vùng sâu, vùng xa", q: "\"Cần chế độ offline khi mạng không ổn định.\"", s: "Cache dữ liệu khẩn cấp, đồng bộ tự động khi có kết nối trở lại" },
+              { t: "Hành lang pháp lý", q: "Cần tuân thủ Nghị định 13/2023 về bảo vệ dữ liệu cá nhân.", s: "Đăng ký Sandbox Bộ Y tế, tư vấn pháp lý chuyên sâu về PDPA" },
+            ].map((item, idx) => (
+              <div key={idx} className="bg-white/5 border border-amber-500/20 border-l-4 border-l-amber-500 rounded-xl p-5 animate-fade-in-up" style={{ animationDelay: `${idx * 100}ms` }}>
+                <h4 className="font-bold text-amber-400 text-sm mb-2">{item.t}</h4>
+                <p className="text-[11px] text-gray-400 italic mb-3 leading-relaxed">{item.q}</p>
+                <div className="text-[11px] font-medium text-[#0fb88f] flex items-start gap-1.5">
+                  <MaterialIcon icon="check_circle" size={14} fill={1} className="shrink-0 mt-0.5" />
+                  {item.s}
+                </div>
+              </div>
+            ))}
+          </div>
+        </section>
+      </div>
+
       {/* NEW: 12. KẾT LUẬN & TÀI LIỆU THAM KHẢO */}
       <div className="w-full bg-[#0B1F3A] py-32 px-4 sm:px-8 relative overflow-hidden">
         <DecorBlobs colors={["bg-blue-600/10", "bg-teal-600/10"]} />
