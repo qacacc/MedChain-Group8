@@ -645,7 +645,7 @@ export default function ContentSections() {
                         <p className="text-sm text-[#4a5568] dark:text-gray-400 leading-relaxed mb-4">{stage.desc}</p>
                         <div className="flex flex-wrap gap-2">
                           {stage.outputs.map((o, i) => (
-                            <span key={i} className="text-[10px] font-bold px-2.5 py-1 rounded-full" style={{ background: `${stage.color}15`, color: stage.color, border: `1px solid ${stage.color}30` }}>
+                            <span key={i} className="text-[10px] font-bold px-2.5 py-1 rounded-full" style={{ background: stage.color, color: '#ffffff', opacity: 0.9 }}>
                               ✓ {o}
                             </span>
                           ))}
